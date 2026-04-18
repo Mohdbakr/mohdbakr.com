@@ -1,0 +1,54 @@
+meta:
+  name: Mohamed Bakr
+
+color:
+  palette:
+    off-white: "#F9FAFB" # Primary background
+    black: "#151515"
+    navy: "#0B1F3A" # Authority, main text
+    charcoal: "#111827" # Secondary text / contrast
+    teal: "#14B8A6" # Primary highlight / accent
+    gold: "#C5A46D" # Sparingly — emphasis only
+    green: "#72994E"
+    orange: "#EE6331"
+    burgundy: "#9A4665"
+
+  # Semantic roles — values reference palette keys above
+  foreground: black
+  background: off-white
+  primary: navy
+  secondary: charcoal
+  tertiary: teal # accent
+  success: green
+  info: teal
+  warning: orange
+  danger: burgundy
+  light: off-white
+  dark: navy
+
+typography:
+  fonts:
+    - family: Roboto Slab
+      source: google
+      weight: 600
+      style: normal
+      display: block
+    - family: Fira Code
+      source: bunny
+      weight: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+      style: [normal, italic]
+
+  base:
+    family: Calibri
+    size: 1rem
+    line-height: 1.25
+    weight: 400
+
+  headings:
+    family: Verdana
+    weight: 600
+    color: primary
+
+  monospace:
+    family: Courier New
+    size: 0.9em

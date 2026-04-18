@@ -1,0 +1,48 @@
+project:
+  type: website
+
+brand: _brand.yml
+
+website:
+  title: "Probability ML Foundations"
+
+  navbar:
+    background: primary
+    foreground: light
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - text: "EN"
+        href: /
+      - text: "AR"
+        href: /ar/
+
+  sidebar:
+    - id: lessons
+      title: "Lessons"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - section: "English"
+          contents:
+            - text: "Week 1: Conditioning & Bayes"
+              href: content/en/week-01-conditioning.qmd
+
+  page-footer:
+    left: "© 2026 Mohamed Bakr · MIT License"
+    center: "[![](assets/quarto-logo.png){height=20px}](https://quarto.org)"
+    right:
+      - text: "Portfolio"
+        href: https://portfolio.mohdbakr.com
+      - text: "LinkedIn"
+        href: https://www.linkedin.com/in/mohdbakr/
+      - text: "GitHub"
+        href: https://github.com/Mohdbakr
+
+format:
+  html:
+    theme: [flatly, styles/custom.scss]
+    toc: true
