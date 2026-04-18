@@ -1,0 +1,19 @@
+---
+title: "About"
+sidebar: false
+toc: false
+---
+
+## Mohamed Bakr
+
+Mohamed Bakr is a data scientist with 20+ years of experience spanning internal audit, financial planning and analysis, and risk management. His career arc — from auditor to FP&A practitioner to data scientist — is the foundation this series is built on. The business problems are real, drawn from cases he has worked directly. He holds a Master of Information and Data Science from UC Berkeley, and is both a Certified Internal Auditor (CIA) and Certified Fraud Examiner (CFE).
+
+**UC Berkeley MIDS · CIA · CFE**
+
+---
+
+## Why This Series
+
+Business professionals in audit, finance, and fraud already reason probabilistically — they update beliefs from evidence, detect anomalies against baselines, and estimate risk under uncertainty. The gap isn't intuition; it's formalism. The math exists to make that intuition precise, scalable, and defensible. But most resources start from abstract theory and never connect it to the decisions practitioners already make every day.
+
+This series starts from the problem. Every topic opens with a scenario you've encountered — then shows the formula that formalizes what you already do. The goal isn't to turn analysts into mathematicians. It's to give them enough mathematical foundation to build models themselves, understand what those models are doing, and explain them to others.
