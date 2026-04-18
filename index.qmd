@@ -1,7 +1,145 @@
 ---
-title: "Probability ML Foundations"
+title: "Probability & ML Foundations"
 sidebar: false
 page-layout: full
 ---
 
-Coming soon.
+::: {.hero-section}
+
+::: {.hero-eyebrow}
+A 12-Week Series for Business Professionals
+:::
+
+::: {.hero-headline}
+The Math Behind Every Business Decision You've Already Made
+:::
+
+::: {.hero-subtitle}
+You already think in probabilities, conditional risks, and anomalies. This series makes that thinking rigorous — probability and statistics for **internal auditors, financial analysts, and fraud examiners** who want to build and understand ML models, not just run them.
+:::
+
+::: {.hero-actions}
+[Start with Week 1 →](content/en/week-01-conditioning.qmd){.btn .btn-primary .btn-lg}
+[See the full series](#the-series){.btn .btn-outline-primary .btn-lg}
+:::
+
+:::
+
+---
+
+## Who This Is For
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .p-4}
+
+**⚖️ Internal Auditors**
+
+You already prioritize risks, evaluate evidence, and update your judgment as findings come in. Bayes' theorem is how you already think — this series puts the formula behind it so you can build audit risk models, explain them to stakeholders, and defend them to regulators.
+
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .p-4}
+
+**📊 Financial Analysts**
+
+You log-transform skewed revenue data by instinct and model correlated KPIs in spreadsheets. This series shows you the probability theory that justifies what you already do — and extends it to models that handle 50 variables, not 5.
+
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100 .p-4}
+
+**🔍 Fraud Examiners**
+
+You detect patterns, score anomalies, and update risk assessments as evidence accumulates. Markov chains, entropy, and kernel methods are already part of your investigation logic — this series makes the math explicit so you can build models that scale across thousands of transactions.
+
+:::
+:::
+
+:::
+
+---
+
+## The Series {#the-series}
+
+12 weeks of probability and statistics — each grounded in a business problem you've already faced. **April – July 2026.**
+
+::: {.card .series-live-card .p-4 .mt-3 .mb-4}
+
+::: {.d-flex .justify-content-between .align-items-center .mb-2}
+::: {.series-week-label}
+WEEK 1 · APR 13–19
+:::
+::: {.badge-live}
+Live
+:::
+:::
+
+**Probability Conditioning & Bayes**
+
+*Given a \$10K invoice from a new vendor — what's the real fraud probability? Every auditor already does this calculation. Here's the formula behind it.*
+
+Conditional probability · Bayes' theorem · Law of total probability
+
+[Open Week 1 →](content/en/week-01-conditioning.qmd){.btn .btn-sm .btn-outline-secondary .mt-2}
+
+:::
+
+*New lessons published weekly.*
+
+---
+
+## How Each Notebook Is Structured
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-sm-6 .g-col-lg-3}
+::: {.card .h-100 .p-4}
+::: {.step-number}
+1
+:::
+**The Business Problem**
+
+A real scenario from audit, finance, or fraud — something you've already encountered in practice.
+:::
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-lg-3}
+::: {.card .h-100 .p-4}
+::: {.step-number}
+2
+:::
+**The Solution**
+
+A working Python implementation that solves the problem — before the theory.
+:::
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-lg-3}
+::: {.card .h-100 .p-4}
+::: {.step-number}
+3
+:::
+**The Math**
+
+The probability or statistics that explains *why* the solution works — with plain-English descriptions alongside every equation.
+:::
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-lg-3}
+::: {.card .h-100 .p-4}
+::: {.step-number}
+4
+:::
+**Exercises**
+
+Scenarios drawn from audit sampling, fraud investigation, and financial modeling — to test the concept on problems you actually face.
+:::
+:::
+
+:::
