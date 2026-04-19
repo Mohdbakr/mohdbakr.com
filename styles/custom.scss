@@ -1,10 +1,26 @@
 /*-- scss:rules --*/
 
-/* Hero */
+/* Semantic CSS custom properties bridging brand palette keys to role names.
+   When _brand.yml changes a role (e.g. primary: burgundy), update the
+   mapping here — everything else adapts automatically. */
+:root {
+    --color-primary: var(--brand-navy);
+    --color-accent: var(--brand-teal);
+    --color-secondary: var(--brand-charcoal);
+    --color-background: var(--brand-off-white);
+    --color-foreground: var(--brand-black);
+    --color-emphasis: var(--brand-gold);
+}
+
+/* ── Hero ─────────────────────────────────────────── */
 .hero-section {
     padding: 5rem 1rem 4rem;
     text-align: center;
-    background-color: var(--bs-body-bg);
+    background-color: var(--color-background);
+    background-image: radial-gradient(circle,
+            color-mix(in srgb, var(--color-primary) 12%, transparent) 1.5px,
+            transparent 1.5px);
+    background-size: 28px 28px;
 }
 
 .hero-eyebrow {
@@ -12,7 +28,7 @@
     font-size: 0.9rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--bs-info);
+    color: var(--color-accent);
     margin-bottom: 0.75rem;
 }
 
@@ -22,7 +38,7 @@
     line-height: 1.2;
     max-width: 800px;
     margin: 0 auto 1.25rem;
-    color: var(--bs-primary);
+    color: var(--color-primary);
 }
 
 .hero-subtitle {
@@ -30,7 +46,7 @@
     max-width: 640px;
     margin: 0 auto 2rem;
     line-height: 1.7;
-    color: var(--bs-body-color);
+    color: var(--color-foreground);
 }
 
 .hero-actions {
@@ -41,29 +57,29 @@
     margin-bottom: 1rem;
 }
 
-/* Step strip (How Each Notebook Is Structured) */
+/* ── Step strip ───────────────────────────────────── */
 .step-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--bs-info);
+    color: var(--color-accent);
     margin-bottom: 0.5rem;
 }
 
-/* Series teaser */
+/* ── Series teaser ────────────────────────────────── */
 .series-live-card {
-    border-left: 4px solid var(--bs-info);
+    border-left: 4px solid var(--color-accent);
 }
 
 .series-week-label {
     font-size: 0.8rem;
     font-weight: 700;
-    color: var(--bs-info);
+    color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 .badge-live {
-    background-color: var(--bs-info);
+    background-color: var(--color-accent);
     color: white;
     font-size: 0.7rem;
     padding: 0.2rem 0.6rem;
@@ -71,11 +87,82 @@
     font-weight: 600;
 }
 
-/* RTL corrections for custom components only.
-   Bootstrap handles standard component mirroring automatically. */
+/* ── Footer icons ─────────────────────────────────── */
+.footer-icon {
+    color: var(--color-secondary);
+    font-size: 1.25rem;
+    margin-left: 0.6rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+        color: var(--color-accent);
+    }
+}
+
+/* ── Dark mode ────────────────────────────────────── */
+[data-bs-theme=dark] {
+    /* Teal becomes the primary hero hue on dark backgrounds (excellent contrast),
+       gold shifts to warm accent. Charcoal body + navy cards create subtle depth. */
+    --color-primary:    var(--brand-teal);
+    --color-accent:     var(--brand-gold);
+    --color-secondary:  var(--brand-slate);
+    --color-background: var(--brand-charcoal);
+    --color-foreground: var(--brand-off-white);
+    --color-emphasis:   var(--brand-gold);
+
+    /* Bootstrap body tokens */
+    --bs-body-bg:       var(--brand-charcoal);
+    --bs-body-color:    var(--brand-off-white);
+
+    /* Navy cards sit against charcoal body — different hue, same depth */
+    --bs-card-bg:       var(--brand-navy);
+    --bs-border-color:  color-mix(in srgb, var(--brand-off-white) 10%, transparent);
+
+    /* Inline code */
+    --bs-code-color:    var(--brand-teal);
+}
+
+/* ── RTL corrections ──────────────────────────────── */
 [dir="rtl"] {
+
+    /* Keep footer layout identical to LTR */
+    .nav-footer {
+        direction: ltr;
+    }
+
+    /* Bootstrap uses physical margins: .me-auto = margin-right:auto and
+       .ms-auto = margin-left:auto. In RTL flex both push toward the center,
+       causing nav items to bunch. Reset the physical margins and use
+       justify-content to spread the two lists to opposite ends. */
+    .navbar-collapse {
+        justify-content: space-between !important;
+    }
+
+    /* In RTL the globe/language toggle sits at the LEFT edge of the navbar.
+       Bootstrap's .dropdown-menu-end uses right:0 (physical), which opens
+       the dropdown off-screen to the left. Flip to left:0 so it opens
+       rightward into the visible page area. */
+    .navbar .dropdown-menu-end {
+        right: auto !important;
+        left: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav.me-auto {
+        margin-right: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+    }
+
     .series-live-card {
         border-left: none;
-        border-right: 4px solid var(--bs-info);
+        border-right: 4px solid var(--color-accent);
+    }
+
+    .footer-icon {
+        margin-left: 0;
+        margin-right: 0.6rem;
     }
 }

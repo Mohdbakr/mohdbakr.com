@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!docs/"
 
 brand: _brand.yml
 
@@ -7,18 +10,24 @@ website:
   title: "Probability ML Foundations"
 
   navbar:
+    pinned: true
     background: primary
     foreground: light
+    logo: assets/logo.svg
+    logo-alt: "Probability ML Foundations"
+    logo-href: /
     left:
       - text: "Home"
         href: index.qmd
       - text: "About"
         href: about.qmd
     right:
-      - text: "EN"
-        href: /
-      - text: "AR"
-        href: /ar/
+      - icon: globe2
+        menu:
+          - text: "English"
+            href: /
+          - text: "العربية"
+            href: /ar/
 
   sidebar:
     - id: lessons
@@ -32,17 +41,16 @@ website:
               href: content/en/week-01-conditioning.qmd
 
   page-footer:
-    left: "© 2026 Mohamed Bakr · MIT License"
-    center: "[![](assets/quarto-logo.png){height=20px}](https://quarto.org)"
-    right:
-      - text: "Portfolio"
-        href: https://portfolio.mohdbakr.com
-      - text: "LinkedIn"
-        href: https://www.linkedin.com/in/mohdbakr/
-      - text: "GitHub"
-        href: https://github.com/Mohdbakr
+    left: "© 2026 Mohamed Bakr"
+    center: "[![](/assets/quarto-logo.png){height=20px}](https://quarto.org) engine"
+    right: |
+      <a href="https://portfolio.mohdbakr.com" title="Portfolio" class="footer-icon"><i class="bi bi-globe2"></i></a>
+      <a href="https://www.linkedin.com/in/mohdbakr/" title="LinkedIn" class="footer-icon"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/Mohdbakr" title="GitHub" class="footer-icon"><i class="bi bi-github"></i></a>
 
 format:
   html:
-    theme: [flatly, styles/custom.scss]
+    theme:
+      light: [flatly, styles/custom.scss]
+      dark: [darkly, styles/custom.scss]
     toc: true

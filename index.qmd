@@ -2,6 +2,7 @@
 title: "Probability & ML Foundations"
 sidebar: false
 page-layout: full
+toc: false
 ---
 
 ::: {.hero-section}

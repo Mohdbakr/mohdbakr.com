@@ -1,2 +1,19 @@
 lang: ar
 dir: rtl
+include-after-body:
+  text: |
+    <script>
+    (function () {
+      var textMap = { 'Home': 'الرئيسية', 'About': 'نبذة' };
+      var hrefMap = { '../index.html': './', '../about.html': './about.html' };
+
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(function (el) {
+        var key = el.querySelector('.menu-text');
+        if (key && textMap[key.textContent.trim()]) {
+          key.textContent = textMap[key.textContent.trim()];
+        }
+        var href = el.getAttribute('href');
+        if (hrefMap[href]) el.setAttribute('href', hrefMap[href]);
+      });
+    })();
+    </script>
