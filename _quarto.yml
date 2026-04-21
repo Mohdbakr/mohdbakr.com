@@ -1,0 +1,29 @@
+project:
+  type: website
+  render:
+    - "**/*.qmd"
+    - "!docs/**"
+    - "!_extensions/**"
+
+website:
+  title: "Mohamed Bakr"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+    right:
+      - text: "LinkedIn"
+        href: https://www.linkedin.com/in/mohdbakr/
+      - text: "GitHub"
+        href: https://github.com/Mohdbakr
+  page-footer:
+    left: "© 2026 Mohamed Bakr · MIT License"
+    center: "Built with [Quarto](https://quarto.org)"
+    right:
+      - text: "Portfolio"
+        href: https://portfolio.mohdbakr.com
+
+format:
+  html:
+    theme: flatly
+    toc: true

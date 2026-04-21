@@ -1,4 +1,4 @@
-# Python-generated files
+# Python
 __pycache__/
 *.py[oc]
 build/
@@ -9,5 +9,13 @@ wheels/
 # Virtual environments
 .venv
 
-# MyST build outputs
-_build
+# Quarto build outputs
+_site/
+_build/
+.quarto/
+**/*.quarto_ipynb
+
+# Docs
+docs/
+
+/.quarto/
