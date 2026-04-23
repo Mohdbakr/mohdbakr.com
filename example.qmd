@@ -1,0 +1,775 @@
+---
+title: "Theme Test"
+subtitle: "Brand & Quarto Feature Showcase"
+author:
+  - name:
+      given: Mohamed
+      family: Bakr
+    url: https://portfolio.mohdbakr.com
+date: today
+date-modified: today
+abstract: |
+  A comprehensive test page for verifying the site brand theme.
+  Covers standard Quarto features: figures, tables, mathematics, callouts, code blocks,
+  tabsets, mermaid diagrams, typography, layout, footnotes, and citations.
+keywords:
+  - Quarto
+  - Theme
+  - Brand
+lang: en
+jupyter: python3
+execute:
+  warning: false
+  message: false
+copyright: "© 2026 Mohamed Bakr"
+references:
+  - id: example_2024
+    author:
+      - family: Example
+        given: Jane
+      - family: Author
+        given: John
+    container-title: Journal of Examples
+    doi: 10.1234/example.2024
+    issued: 2024
+    title: "An Example Article for Demonstrating Citations"
+  - id: canouil_2026
+    author:
+      - family: Canouil
+        given: Mickaël
+    issued: 2026
+    title: "Branded Figures and Tables in R and Python with Quarto"
+    url: https://mickael.canouil.fr/posts/2026-04-15-quarto-brand-figures-tables/
+---
+
+{{< include /_brand_setup.qmd >}}
+
+## Introduction {#sec-intro}
+
+This page tests every standard Quarto feature against the site brand theme.
+Use the table of contents to jump to a specific section.
+
+### Document Organisation
+
+1. **Quarto Features** (@sec-quarto): Figures, tables, mathematics, callouts, tabsets, and code blocks.
+2. **Typography and Layout** (@sec-typography): Headings, lists, quotations, and multi-column layout.
+3. **Advanced Features** (@sec-advanced): Footnotes, citations, and cross-references.
+
+## Quarto Features {#sec-quarto}
+
+### Figures {#sec-figures}
+
+#### Simple Figure
+
+```{python}
+#| label: fig-example
+#| renderings: [light, dark]
+#| fig-cap: "An example figure demonstrating basic figure capabilities with caption and cross-referencing."
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.add_patch(
+    plt.Rectangle(
+        (0, 0),
+        1,
+        1,
+        transform=ax.transAxes,
+        facecolor=c["hero"],
+        alpha=0.12,
+        edgecolor="none",
+    )
+)
+ax.text(
+    0.5,
+    0.55,
+    "Figure Example",
+    transform=ax.transAxes,
+    ha="center",
+    va="center",
+    fontsize=22,
+    fontweight="bold",
+    color=c["hero"],
+)
+ax.text(
+    0.5,
+    0.40,
+    f"brand primary: {c['hero']}",
+    transform=ax.transAxes,
+    ha="center",
+    va="center",
+    fontsize=11,
+    color=c["sub"],
+)
+ax.set_xticks([])
+ax.set_yticks([])
+plt.tight_layout()
+plt.show()
+```
+
+Reference the figure using @fig-example in your text.
+
+#### Subfigures
+
+```{python}
+#| label: fig-multiple
+#| renderings: [light, dark]
+#| fig-cap: "Two subfigures arranged side by side demonstrating multi-panel layouts."
+#| fig-subcap:
+#|   - "First subfigure showing primary colour panel."
+#|   - "Second subfigure showing annotation colour panel."
+#| layout-ncol: 2
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+for label, color, tag in [
+    ("Panel A", c["hero"], "primary"),
+    ("Panel B", c["annot"], "secondary"),
+]:
+    fig, ax = plt.subplots(figsize=(4, 3))
+    ax.add_patch(
+        plt.Rectangle(
+            (0, 0),
+            1,
+            1,
+            transform=ax.transAxes,
+            facecolor=color,
+            alpha=0.15,
+            edgecolor="none",
+        )
+    )
+    ax.text(
+        0.5,
+        0.55,
+        label,
+        transform=ax.transAxes,
+        ha="center",
+        va="center",
+        fontsize=18,
+        fontweight="bold",
+        color=color,
+    )
+    ax.text(
+        0.5,
+        0.40,
+        f"brand {tag}: {color}",
+        transform=ax.transAxes,
+        ha="center",
+        va="center",
+        fontsize=10,
+        color=c["sub"],
+    )
+    ax.set_xticks([])
+    ax.set_yticks([])
+    plt.tight_layout()
+    plt.show()
+```
+
+### Tables {#sec-tables}
+
+#### Simple Table
+
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| Value 1  | Value 2  | Value 3  |
+| Value 4  | Value 5  | Value 6  |
+| Value 7  | Value 8  | Value 9  |
+
+: A simple table demonstrating basic table capabilities. {#tbl-simple}
+
+#### Brand Colour Reference
+
+| Feature         | Light Mode  | Dark Mode   | Notes                           |
+|-----------------|:-----------:|:-----------:|---------------------------------|
+| Background      | `#F9FAFB`   | `#111827`   | Page background colour          |
+| Foreground      | `#0B1F3A`   | `#F9FAFB`   | Primary text colour             |
+| Accent          | `#14B8A6`   | `#14B8A6`   | Teal brand colour               |
+| Emphasis        | `#C5A46D`   | `#C5A46D`   | Gold — sparingly only           |
+
+: Mohamed Bakr brand colour scheme between light and dark modes. {#tbl-colours}
+
+### Mathematics {#sec-maths}
+
+#### Inline Mathematics
+
+Inline expressions like $\alpha + \beta = \gamma$,
+$\int_0^1 f(x) \, dx$,
+and $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ integrate seamlessly with text.
+
+#### Display Mathematics
+
+Einstein's mass-energy equivalence:
+
+$$
+E = mc^2
+$$ {#eq-einstein}
+
+The quadratic formula:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$ {#eq-quadratic}
+
+Bayes' theorem:
+
+$$
+P(A \mid B) = \frac{P(B \mid A)\, P(A)}{P(B)}
+$$ {#eq-bayes}
+
+### Callouts {#sec-callouts}
+
+::: {.callout-note}
+Note callouts provide additional information or context without interrupting the main narrative flow.
+:::
+
+::: {.callout-tip}
+## Pro Tip
+
+Tip callouts offer helpful suggestions, best practices, or recommendations.
+:::
+
+::: {.callout-important}
+## Important Information
+
+Important callouts highlight essential details that readers must not miss.
+:::
+
+::: {.callout-warning}
+## Warning
+
+Warning callouts alert readers to caveats, limitations, or potential issues.
+:::
+
+::: {.callout-caution}
+## Caution
+
+Caution callouts warn about significant risks, dangers, or problematic scenarios.
+:::
+
+### Panel Tabsets {#sec-tabsets}
+
+::: {.panel-tabset}
+
+#### Overview
+
+This tab contains introductory content.
+
+#### Python
+
+```python
+# Bayes theorem example
+def bayes(p_a, p_b_given_a, p_b):
+    return (p_b_given_a * p_a) / p_b
+
+posterior = bayes(0.01, 0.9, 0.11)
+print(f"P(A|B) = {posterior:.4f}")
+```
+
+#### R
+
+```r
+# Bayes theorem in R
+bayes <- function(p_a, p_b_given_a, p_b) {
+  (p_b_given_a * p_a) / p_b
+}
+
+posterior <- bayes(0.01, 0.9, 0.11)
+cat(sprintf("P(A|B) = %.4f\n", posterior))
+```
+
+:::
+
+### Code Blocks {#sec-code}
+
+```{.python filename="probability.py"}
+from scipy.stats import norm
+import numpy as np
+
+def confidence_interval(data, confidence=0.95):
+    """Compute confidence interval for a sample mean."""
+    n = len(data)
+    mean = np.mean(data)
+    se = norm.ppf((1 + confidence) / 2) * (np.std(data, ddof=1) / np.sqrt(n))
+    return mean - se, mean + se
+```
+
+```{.r filename="probability.R"}
+confidence_interval <- function(data, confidence = 0.95) {
+  n <- length(data)
+  mean_val <- mean(data)
+  se <- qnorm((1 + confidence) / 2) * (sd(data) / sqrt(n))
+  c(mean_val - se, mean_val + se)
+}
+```
+
+### Mermaid Diagrams {#sec-mermaid}
+
+```{mermaid}
+%%| fig-cap: "A simple flowchart demonstrating Mermaid diagram support."
+%%| label: fig-mermaid
+flowchart LR
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action A]
+    B -->|No| D[Action B]
+    C --> E[End]
+    D --> E
+```
+
+See @fig-mermaid for the rendered diagram.
+
+### Code Annotations {#sec-annotations}
+
+```python
+def calculate_area(radius: float) -> float: # <1>
+    """Calculate the area of a circle.""" # <2>
+    import math # <3>
+    return math.pi * radius ** 2 # <4>
+```
+
+1. Function signature with type hints for input and output.
+2. Docstring describing the function purpose.
+3. Import the `math` module for access to `pi`.
+4. Apply the area formula: $A = \pi r^2$.
+
+### Data Visualisation {#sec-viz}
+
+Four *Storytelling with Data* principles applied throughout:
+
+- **Title = insight**: headline states the finding, not just the topic
+- **Purposeful colour**: one hero hue; grey for everything else
+- **Minimal ink**: every gridline, spine, and tick must earn its place
+- **Direct labels**: text lives on the chart — no floating legend boxes
+
+Charts use transparent backgrounds and re-render per theme via `renderings: [light, dark]`. Colours are read at render time from `_brand.yml` via the `QUARTO_EXECUTE_INFO` environment variable (@canouil_2026). Derived tones (muted text, gridlines) are computed with `_col_mix()` so nothing is hardcoded — switching `_brand.yml` updates every output automatically.
+
+Tables use `great_tables` with a `gt_brand()` helper that applies brand colours and fonts. Because tables cannot use `renderings`, light and dark variants are wrapped in `.light-content` / `.dark-content` divs so the correct version shows for each theme.
+
+#### Learning Curve
+
+```{python}
+#| label: fig-learning-curve
+#| renderings: [light, dark]
+#| fig-cap: "Two cohorts of 60 students tracked over 8 weeks on conditional probability assessments."
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+weeks  = np.arange(0, 9)
+daily  = np.array([0, 12, 28, 45, 63, 79, 89, 95, 98])
+weekly = np.array([0,  7, 13, 20, 31, 41, 53, 63, 71])
+
+fig, ax = plt.subplots(figsize=(9, 4.5))
+
+ax.plot(weeks, weekly, color=c["muted"], linewidth=2.5, solid_capstyle="round", zorder=2)
+ax.plot(weeks, daily,  color=c["hero"],  linewidth=2.5, solid_capstyle="round", zorder=3)
+ax.fill_between(weeks, weekly, daily, alpha=0.07, color=c["hero"])
+
+ax.text(8.2, 98, "Daily\npractice", color=c["hero"],  va="center",
+        fontsize=9, fontweight="bold", linespacing=1.4)
+ax.text(8.2, 71, "Weekly\nreview",  color=c["muted"], va="center",
+        fontsize=9, linespacing=1.4)
+
+ax.annotate(
+    "Gap opens\nat week 4",
+    xy=(4, 63), xytext=(1.8, 83),
+    fontsize=9, color=c["annot"],
+    arrowprops=dict(arrowstyle="->", color=c["annot"], lw=1.2,
+                    connectionstyle="arc3,rad=-0.3"),
+)
+
+for y in [25, 50, 75, 100]:
+    ax.axhline(y, color=c["grid"], linewidth=0.7, zorder=0)
+
+ax.set_xlim(-0.3, 11.5)
+ax.set_ylim(0, 112)
+ax.set_xticks(weeks)
+ax.set_xticklabels(["Start"] + [f"Wk {w}" for w in weeks[1:]], fontsize=9)
+ax.set_yticks([0, 25, 50, 75, 100])
+ax.set_yticklabels(["0 %", "25 %", "50 %", "75 %", "100 %"], fontsize=9)
+ax.tick_params(length=0)
+ax.set_title(
+    "Daily practice produces 38 % higher mastery after eight weeks",
+    loc="left", fontsize=12, fontweight="bold", pad=10,
+)
+plt.tight_layout(rect=[0, 0, 0.88, 1])
+plt.show()
+```
+
+#### Common Misconceptions
+
+```{python}
+#| label: fig-misconceptions
+#| renderings: [light, dark]
+#| fig-cap: "Survey of 200 data science students on which probability concepts cause the most persistent confusion."
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+concepts = [
+    "Gambler's Fallacy",
+    "Joint vs. conditional probability",
+    "p-value interpretation",
+    "Bayes' theorem in practice",
+    "Law of Large Numbers",
+    "Independence vs. correlation",
+]
+pct    = [82, 71, 68, 54, 41, 35]
+colors = [c["hero"]] + [c["muted"]] * (len(pct) - 1)
+
+fig, ax = plt.subplots(figsize=(9, 4.5))
+
+bars = ax.barh(range(len(concepts)), pct, color=colors, height=0.55)
+
+for bar, val, col in zip(bars, pct, colors):
+    weight = "bold" if val == max(pct) else "normal"
+    ax.text(
+        bar.get_width() + 1.5,
+        bar.get_y() + bar.get_height() / 2,
+        f"{val} %",
+        va="center", fontsize=10, color=col, fontweight=weight,
+    )
+
+ax.set_yticks(range(len(concepts)))
+ax.set_yticklabels(concepts, fontsize=10)
+ax.invert_yaxis()
+
+for spine in ax.spines.values():
+    spine.set_visible(False)
+ax.xaxis.set_visible(False)
+ax.tick_params(left=False, bottom=False)
+ax.set_xlim(0, 110)
+ax.set_title(
+    "The Gambler's Fallacy is the most persistent probability misconception",
+    loc="left", fontsize=12, fontweight="bold", pad=10,
+)
+plt.tight_layout()
+plt.show()
+```
+
+#### Bayesian Updating — Interactive
+
+```{python}
+#| label: fig-bayesian-update
+#| renderings: [light, dark]
+#| fig-cap: "How prior beliefs shift toward the true rate as evidence accumulates."
+#| code-fold: true
+
+c = get_chart_colors()
+x = np.linspace(0, 1, 300)
+
+def _trace(a, b, color, name):
+    return go.Scatter(x=x, y=beta_dist.pdf(x, a, b), mode="lines", name=name,
+                      line=dict(color=color, width=2.5))
+
+fig = go.Figure([
+    _trace(2,    8,    c["muted"], "Prior  Beta(2, 8)"),
+    _trace(2+5,  8+5,  c["annot"], "10 obs  Beta(7, 13)"),
+    _trace(2+20, 8+20, c["hero"],  "40 obs  Beta(22, 28)"),
+])
+fig.add_vline(x=0.44, line_dash="dot", line_color=c["sub"],
+              annotation_text="true rate 0.44", annotation_position="top right",
+              annotation_font_color=c["sub"])
+fig.update_layout(
+    title=dict(text="More evidence pulls beliefs toward the true rate",
+               font=dict(size=14, color=c["text"]), x=0, xanchor="left"),
+    xaxis=dict(title="Estimated success rate", tickformat=".0%",
+               showgrid=True, gridcolor=c["grid"], zeroline=False, color=c["sub"]),
+    yaxis=dict(title="Probability density", showgrid=False, zeroline=False,
+               color=c["sub"]),
+    legend=dict(x=0.02, y=0.98, bgcolor="rgba(0,0,0,0)", font=dict(color=c["text"])),
+    plot_bgcolor="rgba(0,0,0,0)",
+    paper_bgcolor="rgba(0,0,0,0)",
+    font=dict(color=c["text"]),
+    margin=dict(t=60, b=40, l=60, r=20),
+    hovermode="x unified",
+)
+fig.show()
+```
+
+*Drag to explore how a sceptical prior (Beta(2,8)) narrows toward the true success rate as observations accumulate.*
+
+#### Probability Distributions — Branded Table {#sec-branded-table}
+
+Tables styled with `gt_brand()` inherit the active brand's colours, fonts, and
+palette automatically.  Because `great_tables` does not support the
+`renderings` cell option, light and dark variants are wrapped in
+`.light-content` / `.dark-content` divs (@canouil_2026).
+
+```{python}
+#| label: setup-table-data
+#| include: false
+
+dist_data = pd.DataFrame({
+    "Distribution": ["Normal", "Beta", "Exponential", "Poisson", "Binomial"],
+    "Notation":     ["N(μ, σ²)", "Beta(α, β)", "Exp(λ)", "Pois(λ)", "Bin(n, p)"],
+    "Mean":         ["μ", "α / (α + β)", "1 / λ", "λ", "np"],
+    "Variance":     ["σ²", "αβ / ((α+β)²(α+β+1))", "1 / λ²", "λ", "np(1 − p)"],
+    "Support":      ["(−∞, ∞)", "[0, 1]", "[0, ∞)", "{0, 1, 2, …}", "{0, 1, …, n}"],
+})
+```
+
+::: {.light-content}
+
+```{python}
+#| label: tbl-distributions-light
+#| tbl-cap: "Common probability distributions and their key properties (light mode)."
+gt_brand(dist_data, brand_mode="light")
+```
+
+:::
+
+::: {.dark-content}
+
+```{python}
+#| label: tbl-distributions-dark
+#| tbl-cap: "Common probability distributions and their key properties (dark mode)."
+gt_brand(dist_data, brand_mode="dark")
+```
+
+:::
+
+#### Sample‑Size vs. Power — Area Chart {#sec-power-chart}
+
+```{python}
+#| label: fig-power-curve
+#| renderings: [light, dark]
+#| fig-cap: "Statistical power rises steeply for small sample sizes, then plateaus — diminishing returns beyond n ≈ 120."
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+n = np.arange(10, 201)
+effect_sizes = {"Large (d = 0.8)": 0.8, "Medium (d = 0.5)": 0.5, "Small (d = 0.2)": 0.2}
+from scipy.stats import norm as sp_norm
+
+fig, ax = plt.subplots(figsize=(9, 4.5))
+
+palette_colors = [c["hero"], c["annot"], c["muted"]]
+
+for idx, (label, d) in enumerate(effect_sizes.items()):
+    se = 1 / np.sqrt(n)
+    z_crit = sp_norm.ppf(0.975)
+    power = 1 - sp_norm.cdf(z_crit - d / se)
+    color = palette_colors[idx % len(palette_colors)]
+    ax.plot(n, power * 100, color=color, linewidth=2.5, solid_capstyle="round")
+    ax.fill_between(n, 0, power * 100, alpha=0.05, color=color)
+    y_end = power[-1] * 100
+    ax.text(203, y_end, label, color=color, va="center", fontsize=9,
+            fontweight="bold" if idx == 0 else "normal")
+
+ax.axhline(80, color=c["grid"], linewidth=1.2, linestyle="--", zorder=0)
+ax.text(12, 82, "80 % convention", fontsize=8, color=c["sub"])
+
+for y in [25, 50, 75, 100]:
+    ax.axhline(y, color=c["grid"], linewidth=0.5, zorder=0)
+
+ax.set_xlim(10, 230)
+ax.set_ylim(0, 105)
+ax.set_xticks([10, 50, 100, 150, 200])
+ax.set_yticks([0, 25, 50, 75, 100])
+ax.set_yticklabels(["0 %", "25 %", "50 %", "75 %", "100 %"], fontsize=9)
+ax.set_xlabel("Sample size (n)", fontsize=10)
+ax.tick_params(length=0)
+ax.set_title(
+    "Larger effect sizes reach 80 % power with far fewer observations",
+    loc="left", fontsize=12, fontweight="bold", pad=10,
+)
+plt.tight_layout(rect=[0, 0, 0.82, 1])
+plt.show()
+```
+
+#### Correlation Scatter — Palette Colours {#sec-scatter}
+
+```{python}
+#| label: fig-scatter-groups
+#| renderings: [light, dark]
+#| fig-cap: "Simulated study-hours vs. exam-score data for three teaching methods, coloured with the brand palette."
+#| code-fold: true
+
+c = get_chart_colors()
+theme_brand().__enter__()
+
+rng = np.random.default_rng(42)
+
+groups = {
+    "Active recall": (6.0, 75, 1.8, 8),
+    "Spaced repetition": (7.5, 82, 1.5, 7),
+    "Passive review": (5.5, 60, 2.0, 10),
+}
+palette_colors = [c["hero"], c["annot"], c["muted"]]
+
+fig, ax = plt.subplots(figsize=(9, 5))
+
+for idx, (name, (x_mu, y_mu, x_sd, y_sd)) in enumerate(groups.items()):
+    n_pts = 40
+    x = rng.normal(x_mu, x_sd, n_pts)
+    y = rng.normal(y_mu, y_sd, n_pts)
+    color = palette_colors[idx % len(palette_colors)]
+    ax.scatter(x, y, s=40, alpha=0.75, color=color, edgecolors="none", zorder=3)
+    ax.text(x.mean() + 0.3, y.mean() + 1.5, name, fontsize=9, color=color,
+            fontweight="bold", ha="center")
+
+for y in [50, 60, 70, 80, 90]:
+    ax.axhline(y, color=c["grid"], linewidth=0.5, zorder=0)
+
+ax.set_xlabel("Study hours per week", fontsize=10)
+ax.set_ylabel("Exam score", fontsize=10)
+ax.tick_params(length=0)
+ax.set_title(
+    "Active-recall students score higher per hour of study",
+    loc="left", fontsize=12, fontweight="bold", pad=10,
+)
+plt.tight_layout()
+plt.show()
+```
+
+#### Assessment Metrics — Branded Table {#sec-metrics-table}
+
+```{python}
+#| label: setup-metrics-data
+#| include: false
+
+metrics_data = pd.DataFrame({
+    "Method":    ["Active recall", "Spaced repetition", "Passive review"],
+    "n":         [40, 40, 40],
+    "Mean score": [75.2, 82.1, 60.4],
+    "Std dev":   [8.0, 7.0, 10.0],
+    "95 % CI":   ["72.7 – 77.7", "79.9 – 84.3", "57.3 – 63.5"],
+    "p-value":   ["< 0.001", "< 0.001", "ref"],
+})
+```
+
+::: {.light-content}
+
+```{python}
+#| label: tbl-metrics-light
+#| tbl-cap: "Assessment metrics by teaching method (light mode)."
+gt_brand(metrics_data, brand_mode="light")
+```
+
+:::
+
+::: {.dark-content}
+
+```{python}
+#| label: tbl-metrics-dark
+#| tbl-cap: "Assessment metrics by teaching method (dark mode)."
+gt_brand(metrics_data, brand_mode="dark")
+```
+
+:::
+
+## Typography and Layout {#sec-typography}
+
+### Heading Levels {#sec-headings}
+
+This section demonstrates heading hierarchy.
+
+### Level 3 Heading
+
+Content under level 3 heading demonstrating hierarchy and spacing.
+
+#### Level 4 Heading
+
+Content under level 4 heading with appropriate font sizing.
+
+##### Level 5 Heading
+
+Content under level 5 heading maintaining visual consistency.
+
+### Lists {#sec-lists}
+
+#### Unordered Lists
+
+- First item demonstrating unordered list styling.
+- Second item with nested elements:
+  - Nested item 2.1 showing second-level indentation.
+  - Nested item 2.2 with consistent formatting.
+- Third item returning to top level.
+
+#### Ordered Lists
+
+1. First numbered item establishing sequence.
+2. Second numbered item with sub-steps:
+   a. Sub-step 2.1 using alphabetic numbering.
+   b. Sub-step 2.2 maintaining hierarchy.
+3. Third numbered item completing the sequence.
+
+### Quotations {#sec-quotes}
+
+> "The goal is to turn data into information, and information into insight."
+>
+> — Carly Fiorina
+
+### Layout Features {#sec-layout}
+
+#### Multi-Column Layout
+
+::: {layout-ncol=2}
+**Column 1:** Content in the first column demonstrating side-by-side layout capabilities.
+
+**Column 2:** Content in the second column showing parallel information.
+:::
+
+## Advanced Features {#sec-advanced}
+
+### Footnotes {#sec-footnotes}
+
+This sentence includes a footnote.[^1]
+Another sentence demonstrates multiple footnotes working together.[^2]
+
+[^1]: First footnote providing additional context or explanatory information.
+
+[^2]: Second footnote demonstrating how multiple footnotes coexist.
+
+### Citations and Bibliography {#sec-citations}
+
+Citations integrate seamlessly with the bibliography system.
+See @example_2024 for a comprehensive example of citation formatting.
+
+### Cross-References {#sec-refs}
+
+**Sections:** @sec-intro, @sec-quarto, @sec-figures, @sec-tables, @sec-maths.
+
+**Figures:** @fig-example, @fig-mermaid, @fig-multiple (specifically @fig-multiple-1 and @fig-multiple-2), @fig-power-curve, @fig-scatter-groups.
+
+**Tables:** @tbl-simple, @tbl-colours, @tbl-distributions-light, @tbl-metrics-light.
+
+**Equations:** @eq-einstein, @eq-quadratic, @eq-bayes.
+
+## Conclusion {#sec-conclusion}
+
+This page exercises all standard Quarto features for visual verification of the brand theme.
+Toggle between light and dark mode to confirm both variants render correctly.
+
+### Brand Colours Applied
+
+The table below reflects the **active** `_brand.yml` palette.
+All charts and branded tables read these values at render time;
+switching to a different brand file updates every output automatically.
+
+| Role        | Semantic Key   | Description                     |
+|-------------|:--------------:|---------------------------------|
+| Background  | `background`   | Page background colour          |
+| Foreground  | `foreground`   | Primary body text colour        |
+| Primary     | `primary`      | Hero / link colour              |
+| Secondary   | `secondary`    | Annotation / warning colour     |
+| Tertiary    | `tertiary`     | Success / info accent           |
+
+### Render
+
+```bash
+quarto render example.qmd
+```
+
+## References {.references}
+
+::: {#refs}
+:::
