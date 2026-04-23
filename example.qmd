@@ -68,7 +68,7 @@ Use the table of contents to jump to a specific section.
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.add_patch(
@@ -124,7 +124,7 @@ Reference the figure using @fig-example in your text.
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 for label, color, tag in [
     ("Panel A", c["hero"], "primary"),
@@ -357,7 +357,7 @@ Tables use `great_tables` with a `gt_brand()` helper that applies brand colours 
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 weeks  = np.arange(0, 9)
 daily  = np.array([0, 12, 28, 45, 63, 79, 89, 95, 98])
@@ -409,7 +409,7 @@ plt.show()
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 concepts = [
     "Gambler's Fallacy",
@@ -543,7 +543,7 @@ gt_brand(dist_data, brand_mode="dark")
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 n = np.arange(10, 201)
 effect_sizes = {"Large (d = 0.8)": 0.8, "Medium (d = 0.5)": 0.5, "Small (d = 0.2)": 0.2}
@@ -594,7 +594,7 @@ plt.show()
 #| code-fold: true
 
 c = get_chart_colors()
-theme_brand().__enter__()
+apply_brand_theme()
 
 rng = np.random.default_rng(42)
 
