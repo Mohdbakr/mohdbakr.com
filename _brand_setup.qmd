@@ -22,7 +22,7 @@ def get_brand_info() -> dict:
     p = pathlib.Path(raw)
     try:
         return json.loads(p.read_text() if p.is_file() else raw)
-    except Exception:
+    except (json.JSONDecodeError, OSError):
         return {}
 
 
@@ -204,7 +204,6 @@ configure_brand_fonts()
 ```{python}
 #| label: debug-brand-colors-light
 #| eval: false
-#| include: false
 import pprint
 pprint.pprint(_get_brand_colors("light"))
 ```
@@ -212,7 +211,6 @@ pprint.pprint(_get_brand_colors("light"))
 ```{python}
 #| label: debug-brand-colors-dark
 #| eval: false
-#| include: false
 import pprint
 pprint.pprint(_get_brand_colors("dark"))
 ```
