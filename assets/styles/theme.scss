@@ -525,8 +525,6 @@ body .footer {
 // Footer social media links
 
 .nav-footer-center {
-
-
     a {
         display: inline-block;
         color: rgba($footer-fg, 0.6);
@@ -550,6 +548,39 @@ body .footer {
 
     p {
         margin-bottom: 0;
+    }
+}
+
+// Mobile (≤ 768px): center → right → left, each full width, all centered
+@media (max-width: $_breakpoint-md) {
+    .nav-footer {
+
+        .nav-footer-center {
+            order: 1;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .nav-footer-right {
+            order: 2;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0;
+
+            .footer-items {
+                justify-content: center;
+            }
+        }
+
+        .nav-footer-left {
+            order: 3;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0;
+
+        }
     }
 }
 
