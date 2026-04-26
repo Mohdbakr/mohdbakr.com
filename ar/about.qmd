@@ -1,0 +1,25 @@
+---
+title: "محمد بكر"
+subtitle: "CIA · CFE · عالم بيانات"
+# image: ../assets/images/profile-pic.jpg
+# image-alt: "صورة محمد بكر"
+about:
+  template: trestles
+  image-width: 14em
+  image-shape: rounded
+  id: hero-heading
+  links:
+    - icon: linkedin
+      aria-label: "لينكدإن"
+      href: https://www.linkedin.com/in/mohdbakr/
+    - icon: github
+      aria-label: "جيتهب"
+      href: https://github.com/Mohdbakr
+    - icon: globe
+      aria-label: "الموقع"
+      href: https://portfolio.mohdbakr.com
+sidebar: false
+page-layout: full
+---
+
+coming soon...

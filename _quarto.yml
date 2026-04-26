@@ -4,44 +4,69 @@ project:
     - "**/*.qmd"
     - "!docs/**"
     - "!_extensions/**"
-  brand: brand.yml
+  resources:
+    - assets/logos/
+  brand: _brand.yml
 
 website:
-  title: "Mohamed Bakr"
+  title: ""
+  description: "Blog website"
+  page-navigation: true
   favicon: assets/logos/logo_light.svg
+  back-to-top-navigation: true
   navbar:
+    pinned: true
+    foreground: light
+    background: dark
     logo:
-      light: assets/logos/logo_medium_dark.svg
-      dark: assets/logos/logo_medium_light.svg
+      light: assets/logos/logo_with_name_dark.svg
+      dark: assets/logos/logo_with_name_dark.svg
     logo-alt: "Mohamed Bakr"
+    logo-href: /
     left:
-      - text: "Home"
-        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Projects"
+        href: projects.qmd
     right:
-      - icon: globe
-        menu:
-          - text: "English"
-            href: /index.html
-          - text: "العربية"
-            href: /ar/index.html
-      - text: "LinkedIn"
-        href: https://www.linkedin.com/in/mohdbakr/
-      - text: "GitHub"
-        href: https://github.com/Mohdbakr
+      - icon: globe2
+        href: /ar/
   page-footer:
-    left: "© 2026 Mohamed Bakr · MIT License"
-    center: "Built with [Quarto](https://quarto.org)"
+    foreground: light
+    background: dark
+    left: >-
+      Mohamed <span class="footer-brand">BAKR</span> &#169; 2026 &#8729; Made with [![](/assets/images/quarto-logo.png){height=20px}](https://quarto.org)
+    center: |
+      <a href="https://portfolio.mohdbakr.com" title="cv/resume"><i class="bi bi-file-earmark-text p-2"></i></a>
+      <a href="https://www.linkedin.com/in/mohdbakr/" title="LinkedIn"><i class="bi bi-linkedin p-2"></i></a>
+      <a href="https://github.com/Mohdbakr" title="GitHub"><i class="bi bi-github p-2"></i></a>
     right:
-      - text: "Portfolio"
-        href: https://portfolio.mohdbakr.com
+      - text: "Accessibility"
+        aria-label: "Accessibility Commitment"
+        href: accessibility.qmd
+      - text: "Contact"
+        aria-label: "Contact Form"
+        href: "contact.qmd"
+      - text: "License"
+        aria-label: "License Details"
+        href: license.qmd
 
 format:
   html:
     theme:
       light:
-        - cosmo
+        - flatly
         - brand
+        - assets/styles/theme.scss
       dark:
-        - cosmo
+        - darkly
         - brand
-    toc: true
+        - assets/styles/theme.scss
+    code-block-bg: true
+    # syntax-highlighting: ayu
+    crossrefs-hover: true
+    html-math-method: katex
+    include-after-body:
+      - _includes/_fix-mathjax.html
+      - _includes/_fix-nav.html
+      - _includes/_mode-toggle.html

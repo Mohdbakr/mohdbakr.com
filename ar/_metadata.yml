@@ -1,0 +1,53 @@
+lang: ar
+dir: rtl
+include-after-body:
+  text: |
+    <script>
+    (function () {
+      var textMap = {
+        'Home':    'الرئيسية',
+        'About':   'نبذة',
+        'Blog':    'المقالات',
+        'Projects': 'المشاريع'
+      };
+
+      // English absolute path → Arabic absolute path.
+      // Only pages that actually have Arabic equivalents are listed here.
+      // Using absolute paths (resolved via URL API) works at any directory depth.
+      var enToAr = {
+        '/':                  '/ar/',
+        '/index.html':        '/ar/',
+        '/about.html':        '/ar/about.html',
+        '/posts/':            '/ar/posts/',
+        '/posts/index.html':  '/ar/posts/',
+        '/projects.html':      '/ar/projects.html'
+      };
+
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(function (el) {
+        // Language toggle is the compact icon-only item — skip it
+        if (el.closest('.nav-item.compact')) return;
+
+        // Translate nav text
+        var label = el.querySelector('.menu-text');
+        if (label && textMap[label.textContent.trim()]) {
+          label.textContent = textMap[label.textContent.trim()];
+        }
+
+        // Remap English nav href → Arabic equivalent
+        var href = el.getAttribute('href');
+        if (!href || href.charAt(0) === '#') return;
+        try {
+          var absPath = new URL(href, window.location.href).pathname;
+          // Static pages
+          if (enToAr[absPath]) {
+            el.setAttribute('href', enToAr[absPath]);
+            return;
+          }
+          // Blog posts: /posts/slug/ → /ar/posts/slug/
+          if (/^\/posts\//.test(absPath)) {
+            el.setAttribute('href', '/ar' + absPath);
+          }
+        } catch (e) {}
+      });
+    })();
+    </script>

@@ -1,0 +1,868 @@
+/*-- scss:defaults --*/
+
+// Quarto references:
+// Variables: https://github.com/quarto-dev/quarto-cli/src/resources/formats/html/bootstrap/_bootstrap-variables.scss
+// Rules: https://github.com/quarto-dev/quarto-cli/src/resources/formats/html/bootstrap/_bootstrap-rules.scss
+
+/*-- scss:rules --*/
+
+// ===========================
+// MB DESIGN TOKENS
+// ===========================
+// User-facing aliases over Quarto's internal exports.
+// Use --mb-* everywhere instead of --quarto-scss-export-* directly.
+:root {
+    --mb-primary: var(--quarto-scss-export-primary);
+    --mb-secondary: var(--quarto-scss-export-secondary);
+    --mb-accent: var(--quarto-scss-export-primary);
+    --mb-accent-light: var(--quarto-scss-export-navbar-hl);
+}
+
+// ===========================
+// LINK STYLE TOKENS
+// ===========================
+// Centralised variables for consistent link styling across the theme
+$_link-transition-duration: 0.3s;
+$_link-transition-timing: ease;
+$_link-transition: all $_link-transition-duration $_link-transition-timing;
+$_link-underline-color: rgba($body-color, 0.3);
+$_link-underline-color-hover: $link-color;
+$_link-underline-thickness: 1px;
+$_link-underline-thickness-hover: 2px;
+
+// ===========================
+// LINK STYLING PATTERNS
+// ===========================
+// Pattern A (Content Links): Underline with animated thickness/colour
+//   - Use for inline text links in main content, thanks box, etc.
+//   - Variables: $_link-underline-*, $_link-transition
+//
+// Pattern B (Metadata Links): Toggle text-decoration on hover
+//   - Use for author names, dates, meta info in academic/magazine styles
+//   - Keeps UI clean, underline appears only on hover
+//
+// Pattern C (Navigation): Animated pseudo-element underline
+//   - Use for navbar, footer navigation
+//   - ::after element expands from centre or left
+//
+// Pattern D (Interactive UI): Transform effects
+//   - Use for social links, breadcrumbs where motion adds value
+//   - scale() for emphasis, translateX/Y for directional cues
+
+
+// ===========================
+// BREAKPOINT VARIABLES
+// ===========================
+// Convention: This file uses desktop-first (max-width) media queries throughout.
+// All responsive styles should follow this pattern for consistency.
+$_breakpoint-sm: 576px;
+$_breakpoint-md: 768px;
+$_breakpoint-lg: 992px;
+$_breakpoint-xl: 1200px;
+
+// ===========================
+// SPACING SCALE
+// ===========================
+$_space-xs: 0.25rem;
+$_space-sm: 0.5rem;
+$_space-md: 1rem;
+$_space-lg: 1.5rem;
+$_space-xl: 2rem;
+
+// ===========================
+// BORDER RADIUS
+// ===========================
+$_radius-sm: 4px;
+$_radius-md: 8px;
+$_radius-lg: 12px;
+$_radius-full: 50%;
+
+// ===========================
+// ANIMATION TIMING
+// ===========================
+$_anim-fast: 0.2s;
+$_anim-standard: 0.3s;
+$_anim-slow: 0.6s;
+$_easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ===========================
+// BOX SHADOW SCALE
+// ===========================
+$_shadow-sm: 0 2px 4px rgba($body-color, 0.08);
+$_shadow-md: 0 4px 12px rgba($body-color, 0.1);
+$_shadow-lg: 0 8px 24px rgba($body-color, 0.15);
+
+// ===========================
+// SPECIAL COLOURS
+// ===========================
+$_color-sponsor: $brand-sponsor-color;
+
+// ===========================
+// UTILITY FUNCTIONS
+// ===========================
+// Helper function to mix background and foreground colors
+@function body-mix($weight) {
+    @return mix($body-bg, $body-color, $weight);
+}
+
+// ===========================
+// BASE STYLES & ANIMATIONS
+// ===========================
+// Smooth scrolling for the entire page
+html {
+    scroll-behavior: smooth;
+}
+
+// Page fade-in animation on load
+body {
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// Enhanced focus states for accessibility
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid $body-color;
+    outline-offset: 2px;
+    transition: outline-offset 0.2s ease;
+}
+
+// Hide empty divs and paragraphs to reduce visual clutter
+div:empty:not(#code-annotation-line-highlight):not(#code-annotation-line-highlight-gutter),
+p:empty {
+    display: none;
+}
+
+// ===========================
+// QUARTO UI COMPONENTS
+// ===========================
+
+// Back to top button
+#quarto-back-to-top {
+    box-shadow: 0 .2rem .5rem body-mix(95%), 0 0 .05rem body-mix(95%);
+    color: body-mix(5%);
+    bottom: 80px;
+}
+
+// ===========================
+// BOOTSTRAP COMPONENTS
+// ===========================
+
+// List Groups
+.list-group-item-action {
+
+    &:hover,
+    &:focus {
+        color: unset;
+        background-color: unset;
+    }
+}
+
+// Navigation Tabs
+.nav-tabs {
+    border-bottom: 1px solid $body-color;
+
+    .nav-link.active,
+    .nav-item.show .nav-link {
+        color: $body-color;
+        background-color: $body-bg;
+        border-color: rgba($body-color, 0.3);
+        border-bottom-color: $body-bg;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 -.3rem .5rem body-mix(90%);
+
+        &:hover {
+            box-shadow: 0 -.4rem .8rem body-mix(85%);
+        }
+    }
+
+    .nav-link,
+    .nav-pills .nav-link {
+        color: $body-bg;
+        background-color: $body-color;
+        border: 1px solid rgba($body-bg, 0.2);
+        border-bottom-color: $body-color;
+
+        &:hover {
+            color: var(--mb-primary);
+        }
+    }
+}
+
+// Tab content borders (Quarto/Bootstrap default is #dee2e6)
+.tab-content {
+    border-color: rgba($body-color, 0.15);
+    background-color: $body-bg;
+}
+
+// Tooltips
+.tooltip {
+    animation: fadeIn 0.3s ease;
+}
+
+// ===========================
+// NAVBAR
+// ===========================
+
+// Main navbar styling
+// Background colour is controlled by $navbar-bg (set via brand.yml + metadata).
+// Only custom border and layout overrides remain here.
+.navbar {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid transparent;
+    background-color: transparent !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color $_anim-slow $_easing-standard,
+        padding $_anim-slow $_easing-standard,
+        border-color $_anim-slow $_easing-standard,
+        color $_anim-slow $_easing-standard;
+
+    // Search icon: match body-color at top
+    #quarto-search.type-overlay .aa-Autocomplete .aa-Form .aa-Label svg,
+    #quarto-search.type-overlay .aa-Autocomplete .aa-Form .aa-LoadingIndicator svg,
+    #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
+        color: $body-color;
+    }
+
+    &.scrolled {
+        background-color: rgba($navbar-bg, 0.85) !important;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        border-bottom-color: rgba($navbar-fg, 0.15);
+
+        // Search icon: light for dark bg
+        #quarto-search.type-overlay .aa-Autocomplete .aa-Form .aa-Label svg,
+        #quarto-search.type-overlay .aa-Autocomplete .aa-Form .aa-LoadingIndicator svg,
+        #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
+            color: $navbar-fg;
+        }
+    }
+
+    &.bg-primary,
+    &.bg-dark {
+        border: 1px solid rgba($navbar-fg, 0.2);
+    }
+
+    &.fixed-top {
+        border-width: 0 0 1px;
+    }
+
+    &.fixed-bottom {
+        border-width: 1px 0 0;
+    }
+
+    // Dropdown menus (language switcher etc.)
+    .dropdown-menu {
+        background-color: $navbar-bg;
+        border-color: rgba($navbar-fg, 0.15);
+        border-top: none;
+        box-shadow: .05rem .2rem .5rem rgba(0, 0, 0, 0.25), -.05rem .2rem .5rem rgba(0, 0, 0, 0.25);
+
+        .dropdown-item {
+            color: rgba($navbar-fg, 0.8);
+
+            &:hover,
+            &:focus {
+                background-color: rgba($navbar-fg, 0.15);
+                color: var(--mb-accent);
+            }
+        }
+    }
+}
+
+// Override Bootstrap's .navbar[data-bs-theme=dark] (specificity 0,2,1)
+// At page top: dark text for transparent bg; scrolled: light text for dark bg.
+.navbar[data-bs-theme="dark"] {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: var(--mb-accent);
+    --bs-navbar-active-color: var(--mb-accent);
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: var(--mb-accent);
+
+    // Must target .navbar-toggler-icon directly because Bootstrap's
+    // [data-bs-theme=dark] .navbar-toggler-icon sets the variable on the
+    // element itself, overriding any parent-level custom property.
+    .navbar-toggler-icon {
+        --bs-navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$body-color}' stroke-linecap=' round' stroke-miterlimit=' 10' stroke-width=' 2' d=' M4 7h22M4 15h22M4 23h22'/></svg>"))};
+
+    }
+
+    &.scrolled {
+        --bs-navbar-color: #{$navbar-fg};
+        --bs-navbar-hover-color: var(--mb-accent-light);
+        --bs-navbar-active-color: var(--mb-accent-light);
+        --bs-navbar-brand-color: #{$navbar-fg};
+        --bs-navbar-brand-hover-color: var(--mb-accent-light);
+
+        .navbar-toggler-icon {
+            --bs-navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-fg}' stroke-linecap=' round' stroke-miterlimit=' 10' stroke-width=' 2' d=' M4 7h22M4 15h22M4 23h22'/></svg>"))};
+
+        }
+    }
+}
+
+.navbar-logo {
+    max-height: 2em;
+}
+
+// Navbar navigation items with animated underlines
+// Uses inherit/currentColor so colours follow $navbar-fg set by brand/metadata.
+.navbar-nav {
+
+    .nav-link {
+        opacity: 0.65;
+
+        &:hover,
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    a.nav-link,
+    a.nav-link:after,
+    a.nav-link:before {
+        transition: $_link-transition;
+    }
+
+    a.nav-link {
+        position: relative;
+    }
+
+    a.nav-link:not(.dropdown-toggle):after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: .1em solid currentColor;
+        transform: scaleX(0);
+        transition: transform $_anim-standard $_easing-standard;
+    }
+
+    a.nav-link:not(.dropdown-toggle):hover:after {
+        transform: scaleX(0.8);
+    }
+
+    a.nav-link:not(.dropdown-toggle).active:after,
+    a.nav-link:not(.dropdown-toggle).active:hover:after {
+        border-bottom-width: .2em;
+        transform: scaleX(0.8);
+    }
+
+    .show>.nav-link,
+    .active>.nav-link,
+    .nav-link.active {
+        font-weight: bolder;
+    }
+}
+
+// Responsive navbar adjustments
+@media (max-width: $_breakpoint-lg) {
+    .navbar-expand-lg {
+
+        a.nav-link.active:after,
+        a.nav-link.active:hover:after,
+        a.nav-link:hover:after,
+        a.nav-link:after {
+            transform: scaleX(0) !important;
+        }
+    }
+}
+
+// title - brand
+.navbar-brand {
+    color: inherit;
+    font-weight: 900;
+
+}
+
+// Navbar title + logo: smooth lift on hover
+.navbar-title,
+.navbar-brand-logo {
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: bolder;
+    transition: transform $_anim-slow ease-out,
+        opacity $_anim-slow ease-out,
+        filter $_anim-slow ease-out;
+
+    &:hover {
+        filter: drop-shadow(0 0 10px color-mix(in srgb, var(--mb-accent) 70%, transparent));
+        transform: translateY(-2px);
+        opacity: 0.85;
+    }
+
+    @media (max-width: $_breakpoint-md) {
+        display: none;
+    }
+}
+
+// links
+.navbar-nav .nav-item {
+    .nav-link {
+        transition: all $_anim-standard $_easing-standard;
+    }
+}
+
+// ===========================
+// LANGUAGE TOGGLE BADGE
+// ===========================
+// The globe icon (kept in YAML for JS detection) is hidden via CSS.
+// _fix-nav.html injects "AR" or "EN" into .menu-text, which is styled as a
+// compact monospace pill badge — the only visible element.
+// Language toggle: invert when at top (transparent navbar)
+.navbar-nav a.nav-link.lang-toggle {
+    opacity: 1;
+
+    // Suppress the animated underline used by regular nav links
+    &:not(.dropdown-toggle)::after,
+    &:not(.dropdown-toggle):hover::after {
+        display: none;
+    }
+
+    // Globe icon hidden — the text badge is the full visual
+    .bi {
+        display: none;
+    }
+
+    // The injected language code styled as a standalone pill
+    .menu-text {
+        display: inline-block;
+        font-size: 0.68em;
+        font-weight: 900;
+        letter-spacing: 0.07em;
+        font-family: $font-family-monospace;
+        padding: 0.18em 0.55em;
+        border-radius: 4px;
+        line-height: 1.5;
+        transition: background $_anim-fast ease, border-color $_anim-fast ease, color $_anim-fast ease;
+
+        // At top: inverted (dark pill on light bg)
+        color: $body-bg;
+        background-color: $body-color;
+        border: 1.5px solid rgba($body-color, 0.45);
+    }
+
+    &:hover .menu-text {
+        color: rgba($body-color, 0.5);
+        background: rgba($body-bg, 0.5);
+        border-color: rgba($body-color, 0.75);
+    }
+}
+
+// Scrolled state: revert pill to navbar-fg/bg
+.navbar.scrolled .navbar-nav a.nav-link.lang-toggle {
+    .menu-text {
+        color: $navbar-bg;
+        background-color: $navbar-fg;
+        border-color: rgba($navbar-fg, 0.45);
+    }
+
+    &:hover .menu-text {
+        color: rgba($navbar-fg, 0.5);
+        background: rgba($navbar-bg, 0.5);
+        border-color: rgba($navbar-fg, 0.75);
+    }
+}
+
+// ===========================
+// FOOTER
+// ===========================
+
+body .nav-footer,
+body .footer {
+    border-top: 1px solid rgba($footer-fg, 0.1);
+    color: rgba($footer-fg, 0.6);
+
+    .footer-brand {
+        color: $footer-fg;
+    }
+
+    a {
+        color: rgba($footer-fg, 0.6);
+        transition: color $_anim-fast ease;
+
+        &:hover {
+            color: $footer-fg;
+        }
+    }
+
+    // Keep quarto logo fully visible, slight fade on hover
+    a:has(img) {
+        color: inherit;
+        opacity: 1;
+
+        &:hover {
+            color: inherit;
+            opacity: 0.8;
+        }
+    }
+
+    .nav-link {
+        color: rgba($footer-fg, 0.6);
+
+        &:hover {
+            color: $footer-fg;
+            text-decoration: underline;
+        }
+    }
+}
+
+// Footer social media links
+
+.nav-footer-center {
+
+
+    a {
+        display: inline-block;
+        color: rgba($footer-fg, 0.6);
+        text-decoration: none;
+        transition: color $_anim-fast ease;
+
+        &:hover {
+            color: $footer-fg;
+        }
+    }
+
+    i {
+        color: rgba($footer-fg, 0.6);
+        transition: color $_anim-fast ease;
+        font-size: 1.9rem;
+
+        &:hover {
+            color: $footer-fg;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+// Hide navbar theme toggle (replaced by floating toggle)
+.quarto-navbar-tools .quarto-color-scheme-toggle {
+    display: none;
+}
+
+// Floating dark/light mode toggle (bottom-left)
+.bd-mode-toggle {
+    z-index: 1500;
+
+    .btn-mode-toggle {
+        color: $footer-fg;
+        background-color: $footer-bg;
+        border: 1px solid rgba($footer-fg, 0.2);
+        border-radius: $_radius-md;
+        font-size: 1.1rem;
+        transition: background $_anim-fast ease, border-color $_anim-fast ease;
+
+        &:hover {
+            background-color: lighten($footer-bg, 8%);
+            border-color: rgba($footer-fg, 0.4);
+        }
+    }
+}
+
+
+// Horizontal rule: use body foreground for brand-awareness
+hr {
+    color: $body-color;
+    border-top-color: $body-color;
+    opacity: 0.25;
+}
+
+// Appendix border: override Quarto's #dee2e6 default with brand foreground
+#quarto-appendix.default {
+    border-top-color: rgba($body-color, 0.15);
+
+    .quarto-appendix-bibtex,
+    .quarto-appendix-citeas {
+        border-color: rgba($body-color, 0.15);
+    }
+}
+
+// ===========================
+// ABOUT PAGE
+// ===========================
+
+// Profile image with glow effect
+// Scoped to trestles template (about page) to avoid affecting solana (index page)
+.quarto-about-trestles img.about-image {
+
+    flex-shrink: 0;
+    // aspect-ratio: 3/5;
+    object-fit: cover;
+    border-radius: $_radius-full;
+    border: 2px solid color-mix(in srgb, var(--mb-accent) 30%, transparent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        // box-shadow: 0 0 10px $body-color;
+        transform: translateY(-5px);
+        border-color: var(--mb-accent);
+    }
+}
+
+// About entity title hover effect
+.about-entity {
+    #title-block-header.quarto-title-block.default .quarto-title .title:hover {
+        color: $body-color;
+        text-shadow: 0 0 10px $body-color;
+    }
+}
+
+// ===========================
+// INDEX / ABOUT PAGE (Solana template)
+// ===========================
+// Layout: silviacanelon.com  |  Social icons: mickael.canouil.fr hero banner
+.quarto-about-solana {
+
+    // Profile image — PNG with circular shape, so drop-shadow follows the
+    // actual image contour (box-shadow would just hit the rectangular bounding box)
+    img.about-image {
+        border-radius: $_radius-lg !important;
+        filter:
+            drop-shadow(0 0 18px color-mix(in srgb, var(--mb-accent) 40%, transparent)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
+        transition: filter $_anim-standard $_easing-standard,
+            transform $_anim-standard $_easing-standard;
+
+        &:hover {
+            filter:
+                drop-shadow(0 0 28px color-mix(in srgb, var(--mb-accent) 65%, transparent)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.5));
+            transform: translateY(-4px);
+        }
+    }
+
+    // --- Typography ---
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.1em !important;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    // --- Desktop layout (text right, image left) ---
+    .entity-contents {
+        text-align: right !important;
+        padding: 0 2em 0 2em;
+    }
+
+    .about-contents {
+        padding: 0 0 0 2em !important;
+    }
+
+    .about-links.subtitle {
+        font-size: 1em !important;
+        font-family: "Red Hat Text";
+        justify-content: flex-end !important;
+    }
+
+    .about-image {
+        margin-top: -2em;
+        padding: 0 2em 0 0;
+    }
+
+    // --- Social icon links (bordered buttons, mcanouil hero-banner style) ---
+    .about-entity {
+        .about-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end !important;
+            gap: 0.75rem;
+            column-gap: 0.75rem;
+            font-size: 1.2em !important;
+        }
+
+        .about-link {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            padding: 0.65rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: rgba($body-color, 0.08);
+            border: 1px solid rgba($body-color, 0.15);
+            border-radius: $_radius-md;
+            color: rgba($body-color, 0.85);
+            text-decoration: none;
+            transition: all $_anim-standard $_easing-standard;
+            font-size: 1.1rem;
+
+            .about-link-text {
+                display: flex;
+                align-items: center;
+                gap: $_space-sm;
+            }
+
+            &:hover {
+                background-color: rgba($body-color, 0.12);
+                border-color: rgba($body-color, 0.3);
+                transform: translateY(-2px);
+                box-shadow: $_shadow-md;
+                color: $body-color;
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+
+            // Special styling for sponsor link
+            &:has(iconify-icon[icon*="heart"]) {
+                background-color: rgba($_color-sponsor, 0.1);
+                border-color: rgba($_color-sponsor, 0.3);
+                color: $_color-sponsor;
+
+                &:hover {
+                    background-color: rgba($_color-sponsor, 0.2);
+                    border-color: rgba($_color-sponsor, 0.5);
+                    color: darken($_color-sponsor, 10%);
+                }
+            }
+        }
+    }
+
+    // --- Mobile (screens up to ~992px) ---
+    @media screen and (max-width: $_breakpoint-lg) {
+        .entity-contents {
+            order: 2 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            text-align: center !important;
+        }
+
+        .subtitle {
+            text-align: center !important;
+        }
+
+        .about-entity .about-links {
+            flex-direction: row !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+            font-size: 1em !important;
+        }
+
+        .about-contents {
+            padding: 0 !important;
+        }
+
+        .about-links.subtitle {
+            justify-content: center !important;
+        }
+
+        .about-image {
+            order: 1 !important;
+            margin-top: 0;
+            padding: 0 2em !important;
+        }
+    }
+}
+
+// "Learn more about me" — center on mobile (inherits right-align from entity-contents on desktop)
+@media screen and (max-width: $_breakpoint-lg) {
+    .quarto-about-solana .about-contents p:has(.btn) {
+        text-align: center;
+    }
+}
+
+/* ── RTL corrections ──────────────────────────────── */
+[dir="rtl"] {
+
+    // Override Bootstrap's body rule (which blocks simple inheritance from html)
+    body {
+        font-family: "Tajawal", sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Readex Pro", sans-serif;
+    }
+
+    .nav-footer {
+        direction: ltr;
+    }
+
+    /* Bootstrap physical margins cause nav items to bunch in RTL flex.
+       Reset and use justify-content instead. */
+    .navbar-collapse {
+        justify-content: space-between !important;
+    }
+
+    /* dropdown-menu-end uses right:0 (physical), opens off-screen left in RTL. */
+    .navbar .dropdown-menu-end {
+        right: auto !important;
+        left: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav.me-auto {
+        margin-right: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+    }
+
+    .series-live-card {
+        border-left: none;
+        border-right: 4px solid var(--mb-accent);
+    }
+
+    .footer-icon {
+        margin-left: 0;
+        margin-right: 0.6rem;
+    }
+
+    // Solana index page: flip text alignment for RTL (desktop only)
+    @media screen and (min-width: $_breakpoint-lg) {
+        .quarto-about-solana {
+            .entity-contents {
+                text-align: left !important;
+            }
+
+            .about-links.subtitle {
+                justify-content: flex-end !important;
+            }
+
+            .about-entity .about-links {
+                justify-content: flex-end !important;
+            }
+
+            .about-contents {
+                padding: 0 2em 0 0 !important;
+            }
+
+            .about-image {
+                padding: 0 0 0 2em;
+            }
+
+            .about-contents p:has(.btn) {
+                text-align: left;
+            }
+        }
+    }
+}

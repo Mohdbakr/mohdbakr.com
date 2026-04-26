@@ -1,0 +1,40 @@
+---
+title: "محمد بكر"
+pagetitle: "Mohamed Bakr, CIA, CFE"
+subtitle: "أجمع بين ذكاء البيانات، وبراعة الأتمتة، وفن الخط العربي الأصيل"
+image: ../assets/images/index-illustration-transparent.png
+image-alt: "لوحة فنية تجريدية تجمع بين فن الخط العربي ومفاهيم علم البيانات."
+
+about:
+  template: solana
+  image-width: 28em
+  id: hero-heading
+  links:
+    - text: '{{< iconify fa7-brands:linkedin title="LinkedIn logo linking to Mohamed Bakr account" label="LinkedIn logo linking to Mohamed Bakr account" >}}'
+      aria-label: "LinkedIn logo linking to Mohamed Bakr account"
+      href: https://www.linkedin.com/in/mohdbakr/
+      target: _blank
+      rel: noopener noreferrer
+    - text: '{{< iconify octicon:mark-github-16 title="GitHub logo linking to Mohamed Bakr account" label="GitHub logo linking to Mohamed Bakr account" >}}'
+      aria-label: "GitHub logo linking to Mohamed Bakr account"
+      href: https://github.com/Mohdbakr
+      target: _blank
+      rel: noopener noreferrer
+    - text: '{{< iconify fa7-solid:envelope title="Contact logo linking to Mohamed Bakr account" label="Contact logo linking to Mohamed Bakr account" >}}'
+      aria-label: "Contact logo linking to Mohamed Bakr contact page"
+      href: /ar/contact.html
+    - text: '{{< iconify fa7-solid:heart title="ادعم محمد بكر" label="ادعم محمد بكر" >}}'
+      aria-label: "ادعم محمد بكر"
+      href: https://github.com/sponsors/Mohdbakr
+      target: _blank
+      rel: noopener noreferrer
+page-layout: full
+---
+
+::: {#hero-heading}
+
+ظلّ تحليل البيانات والمنهجية الكمية في صميم عملي طوال عشرين عامًا في التدقيق الداخلي والتخطيط المالي وإدارة المخاطر. جاء ماجستير علوم المعلومات والبيانات من جامعة كاليفورنيا بيركلي من [مدرسة المعلومات](https://www.ischool.berkeley.edu/) ليُرسّخ الأسس النظرية. أبني أنظمة تعلّم الآلة، أتعلم عن الاحتمالات والإحصاء التي تربط هذه المجالات كل يوم.
+
+[اعرف المزيد عنّي &larr;](../about.qmd){.btn .btn-primary}
+
+:::

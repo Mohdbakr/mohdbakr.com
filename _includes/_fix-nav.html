@@ -1,0 +1,55 @@
+<script>
+(function () {
+  var path = window.location.pathname;
+  var isArabic = /^\/ar(\/|$)/.test(path);
+
+  function toArabic(p) {
+    return (p === '/' || p === '/index.html') ? '/ar/' : '/ar' + p;
+  }
+  function toEnglish(p) {
+    return p.replace(/^\/ar/, '') || '/';
+  }
+
+  // Fix logo on Arabic pages — setAttribute + click handler because Quarto's
+  // quarto-nav.js may run after this script and reset the attribute.
+  if (isArabic) {
+    var brand = document.querySelector('a.navbar-brand');
+    if (brand) {
+      brand.setAttribute('href', '/ar/');
+      brand.addEventListener('click', function (e) {
+        if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+          e.preventDefault();
+          window.location.href = '/ar/';
+        }
+      });
+    }
+
+    // Rewrite footer right-side links to their Arabic equivalents.
+    // Must defer to DOMContentLoaded — the Quarto footer HTML is rendered
+    // after this include-after-body script in the document, so the nodes
+    // don't exist yet when this script runs synchronously.
+    document.addEventListener('DOMContentLoaded', function () {
+      var footerLinks = document.querySelectorAll('.nav-footer-right .nav-link');
+      footerLinks.forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (href) a.setAttribute('href', toArabic(new URL(href, window.location.href).pathname));
+      });
+    });
+  }
+
+  // Find the language toggle via the globe2 icon (icon-only compact nav item).
+  var globe = document.querySelector('.navbar-nav .bi-globe2');
+  var langLink = globe ? globe.closest('a.nav-link') : null;
+  if (!langLink) return;
+
+  langLink.classList.add('lang-toggle');
+
+  // Inject "AR" or "EN" into the .menu-text span — CSS styles it as a pill badge.
+  var label = langLink.querySelector('.menu-text');
+  var targetLabel = isArabic ? 'EN' : 'AR';
+  if (label) label.textContent = targetLabel;
+
+  langLink.setAttribute('title', isArabic ? 'Switch to English' : 'Switch to Arabic');
+  langLink.setAttribute('href', isArabic ? toEnglish(path) : toArabic(path));
+})();
+</script>

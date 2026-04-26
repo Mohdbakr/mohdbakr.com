@@ -1,0 +1,9 @@
+<script>
+// Patch Quarto's typesetMath to handle Plotly's MathJax v2 (which lacks .typeset())
+if (window.Quarto && window.Quarto.typesetMath) {
+  const _orig = window.Quarto.typesetMath;
+  window.Quarto.typesetMath = function(el) {
+    try { _orig(el); } catch(e) { /* MathJax v2/v3 mismatch — safe to ignore */ }
+  };
+}
+</script>

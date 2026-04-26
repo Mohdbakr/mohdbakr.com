@@ -1,0 +1,22 @@
+---
+title: ""
+# image: assets/images/profile-pic.jpg
+# image-alt: "Mohamed Bakr profile photo"
+about:
+  template: trestles
+  image-width: 14em
+  id: hero-heading
+  links:
+    - icon: linkedin
+      aria-label: "LinkedIn"
+      href: https://www.linkedin.com/in/mohdbakr/
+    - icon: github
+      aria-label: "GitHub"
+      href: https://github.com/Mohdbakr
+    - icon: globe
+      aria-label: "Portfolio"
+      href: https://portfolio.mohdbakr.com
+page-layout: full
+---
+
+coming soon...

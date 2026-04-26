@@ -44,37 +44,67 @@ logo:
     dark: large-dark
 
 color:
-  background:
-    dark: "#111827" # charcoal
-    light: "#F9FAFB" # off-white
-  foreground:
-    dark: "#F9FAFB" # off-white
-    light: "#0B1F3A" # navy
-  dark:
-    dark: "#111827" # charcoal
-    light: "#0B1F3A" # navy
-  light:
-    dark: "#F9FAFB" # off-white
-    light: "#F9FAFB" # off-white
+  palette:
+    anvil-teal: "#0F766E"
+    anvil-teal-light: "#2DD4BF"
+    hammered-gold: "#A16207"
+    hammered-gold-light: "#FBBF24"
+    molten-crimson: "#991B1B"
+    iron-slate: "#475569"
+    copper-green: "#065F46"
 
+    sponsor-color: "#FF69B4"
+    
+  background:
+    dark: "#333333"
+    light: "#FAFAF9"
+  foreground:
+    dark: "#D6C8B8"
+    light: "#352A26"
+  dark:
+    dark: "#333333"
+    light: "#352A26"
+  light:
+    dark: "#D6C8B8"
+    light: "#FAFAF9"
+  primary:
+    light: anvil-teal
+    dark: anvil-teal-light
+  secondary:
+    light: hammered-gold
+    dark: hammered-gold-light
+  tertiary: molten-crimson
+  success: copper-green
+  info:
+    light: anvil-teal
+    dark: anvil-teal-light
+  warning:
+    light: hammered-gold
+    dark: hammered-gold-light
+  danger: molten-crimson
 typography:
   fonts:
-    - family: Inter
-      source: google
-    - family: Fira Code
-      source: google
-  base: Inter
-  headings: Inter
-  monospace: Fira Code
+    - family: Poppins
+      source: bunny
+    - family: Lora
+      source: bunny
+    - family: JetBrains Mono
+      source: bunny
+    - family: Readex Pro
+      source: bunny
+    - family: Tajawal
+      source: bunny
+  base: Poppins
+  headings: Lora
+  monospace: JetBrains Mono
   link:
-    color: foreground
+    color: 
+      light: anvil-teal
+      dark: anvil-teal-light
+
 
 defaults:
   bootstrap:
     defaults:
-      theme: mcanouil
       tooltip-color: $background
       tooltip-bg: $foreground
-    rules: |
-      $teal: #14B8A6;
-      $gold: #C5A46D;

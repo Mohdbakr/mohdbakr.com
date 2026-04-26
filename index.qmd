@@ -32,7 +32,7 @@ page-layout: full
 ---
 
 ::: {#hero-heading}
-Data and analytics have been at the core of my work across two decades in internal audit, FP&A, and risk management. A Master of Information and Data Science from UC Berkeley sharpened the formal foundations. I build ML systems and write about the probability and statistics that connect those domains.
+Data and analytics have been at the core of my work across two decades in internal audit, FP&A, and risk management. A Master UC Berkeley MIDS from the [School of Information](https://www.ischool.berkeley.edu/) sharpened the formal foundations. I build ML systems and learn about the probability and statistics that connect those domains evry day.
 
 [Learn more about me &rarr;](about.qmd){.btn .btn-primary}
 :::
