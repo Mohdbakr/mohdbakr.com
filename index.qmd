@@ -1,6 +1,6 @@
 ---
 title: "Mohamed Bakr"
-pagetitle: "Mohamed Bakr, CIA, CFE"
+pagetitle: "Mohamed Bakr"
 subtitle: "Data scientist, automation wizard, and Arabic calligrapher"
 image: assets/images/index-illustration-transparent.png
 image-alt: "Abstract illustration of Arabic calligraphy merging with data science concepts"
@@ -32,7 +32,7 @@ page-layout: full
 ---
 
 ::: {#hero-heading}
-Data and analytics have been at the core of my work across two decades in internal audit, FP&A, and risk management. A Master UC Berkeley MIDS from the [School of Information](https://www.ischool.berkeley.edu/) sharpened the formal foundations. I build ML systems and learn about the probability and statistics that connect those domains evry day.
+Data Science and data analytics have been at the core of my work across two decades in internal audit, fraud prevention, FP&A, and risk management. The [UC Berkeley](https://www.berkeley.edu){target="_blank"} Master of Information and Data Science (MIDS) from the [School of Information](https://www.ischool.berkeley.edu/){target="_blank"} sharpened my formal foundations. I spend my time engineering data science and statistical inference solutions, deepening my knowledge of the mathematical heart of probability that connects these domains, and finding my flow in the intricate geometry of Arabic calligraphy.
 
 [Learn more about me &rarr;](about.qmd){.btn .btn-primary}
 :::
