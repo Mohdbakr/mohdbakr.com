@@ -1,0 +1,16 @@
+---
+pagetitle: Mohamed Bakr - Contact
+title: Send me a note
+name: Contact Form
+page-layout: article
+format: 
+  html: 
+    grid:
+      margin-width: 0px
+      sidebar-width: 0px
+
+# header-includes: >
+#   <link rel="stylesheet" href="assets/contact.css">
+# resources:
+#   - assets/contact.css
+---

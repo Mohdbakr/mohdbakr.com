@@ -1,22 +1,38 @@
 ---
 title: "Mohamed Bakr"
-subtitle: "Data Scientist & ML Engineer"
+pagetitle: "Mohamed Bakr, CIA, CFE"
+subtitle: "Data scientist, automation wizard, and Arabic calligrapher"
+image: assets/images/index-illustration-transparent.png
+image-alt: "Abstract illustration of Arabic calligraphy merging with data science concepts"
+
 about:
-  template: trestles
-  image: assets/images/profile-pic.jpg
+  template: solana
+  image-width: 28em
+  id: hero-heading
   links:
-    - icon: linkedin
-      text: LinkedIn
+    - text: '{{< iconify fa7-brands:linkedin title="LinkedIn logo linking to Mohamed Bakr account" label="LinkedIn logo linking to Mohamed Bakr account" >}}'
+      aria-label: "LinkedIn logo linking to Mohamed Bakr account"
       href: https://www.linkedin.com/in/mohdbakr/
-    - icon: github
-      text: GitHub
+      target: _blank
+      rel: noopener noreferrer
+    - text: '{{< iconify octicon:mark-github-16 title="GitHub logo linking to Mohamed Bakr account" label="GitHub logo linking to Mohamed Bakr account" >}}'
+      aria-label: "GitHub logo linking to Mohamed Bakr account"
       href: https://github.com/Mohdbakr
-    - icon: globe
-      text: Portfolio
-      href: https://portfolio.mohdbakr.com
-sidebar: false
+      target: _blank
+      rel: noopener noreferrer
+    - text: '{{< iconify fa7-solid:envelope title="Contact logo linking to Mohamed Bakr account" label="Contact logo linking to Mohamed Bakr account" >}}'
+      aria-label: "Contact logo linking to Mohamed Bakr contact page"
+      href: /contact.html
+    - text: '{{< iconify fa7-solid:heart title="Sponsor Mohamed Bakr" label="Sponsor Mohamed Bakr" >}}'
+      aria-label: "Sponsor Mohamed Bakr"
+      href: https://github.com/sponsors/Mohdbakr
+      target: _blank
+      rel: noopener noreferrer
+page-layout: full
 ---
 
-Helping businesses make better decisions through data science, probability, and machine learning.
+::: {#hero-heading}
+Data and analytics have been at the core of my work across two decades in internal audit, FP&A, and risk management. A Master of Information and Data Science from UC Berkeley sharpened the formal foundations. I build ML systems and write about the probability and statistics that connect those domains.
 
-I build educational content and practical tools that bridge the gap between statistical theory and real-world applications — in both English and Arabic.
+[Learn more about me &rarr;](about.qmd){.btn .btn-primary}
+:::
