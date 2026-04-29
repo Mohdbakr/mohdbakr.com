@@ -18,6 +18,9 @@
     --mb-accent-light: var(--quarto-scss-export-navbar-hl);
 }
 
+// Rules and variables reference
+// https://github.com/mcanouil/mickael.canouil.fr/
+
 // ===========================
 // LINK STYLE TOKENS
 // ===========================
@@ -147,9 +150,8 @@ p:empty {
 // QUARTO UI COMPONENTS
 // ===========================
 
-// Back to top button
+// Back to top button — same style as .btn-mode-toggle for visual consistency
 #quarto-back-to-top {
-    box-shadow: 0 .2rem .5rem body-mix(95%), 0 0 .05rem body-mix(95%);
     bottom: 80px;
     color: $footer-fg;
     background-color: $footer-bg;
@@ -165,6 +167,7 @@ p:empty {
 
     @media (max-width: $_breakpoint-md) {
         font-size: 0;
+        box-shadow: none !important;
 
         .bi-arrow-up {
             font-size: 1.1rem;
@@ -653,21 +656,29 @@ hr {
 // ===========================
 
 // Profile image with glow effect
-// Scoped to trestles template (about page) to avoid affecting solana (index page)
+// Scoped to trestles template (about page)
 .quarto-about-trestles img.about-image {
-
-    flex-shrink: 0;
-    // aspect-ratio: 3/5;
+    width: 100%;
+    border-radius: $_radius-lg !important;
     object-fit: cover;
-    border-radius: $_radius-full;
-    border: 2px solid color-mix(in srgb, var(--mb-accent) 30%, transparent);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid color-mix(in srgb, var(--mb-accent) 20%, transparent);
+    box-shadow: $_shadow-md;
+    transition: transform $_anim-standard ease,
+        box-shadow $_anim-standard ease,
+        border-color $_anim-standard ease;
 
     &:hover {
         // box-shadow: 0 0 10px $body-color;
         transform: translateY(-5px);
         border-color: var(--mb-accent);
+    }
+}
+
+.quarto-about-trestles {
+    .subtitle {
+        font-size: var(--bs-body-font-size);
+        font-weight: var(--bs-body-font-weight);
+        text-align: start;
     }
 }
 
@@ -679,10 +690,82 @@ hr {
     }
 }
 
+// Author name: dim first name, bold last name for visual hierarchy
+.about-title {
+    font-size: 2.2rem;
+    line-height: 1.15;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.brand-name-dim {
+    font-weight: 300;
+    opacity: 0.45;
+}
+
+.brand-name-bold {
+    font-weight: 900;
+}
+
+// Author logo in the about page hero — constrain size, handle light/dark variants
+.author-logo {
+    max-height: 5em;
+    width: auto;
+    margin-bottom: 0.25rem;
+}
+
+// Credential badge strip — landscape images (CIA, CFE, UCB) displayed at
+// natural aspect ratio, capped in height. Shown below the credential text list.
+.cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.75rem;
+
+    img {
+        height: auto;
+        width: auto;
+        max-height: 3rem;
+        max-width: 9rem;
+        border-radius: $_radius-sm;
+        border: 1px solid rgba($body-color, 0.1);
+        background: body-mix(97%);
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+body.quarto-dark .cert-badges img {
+    background-color: rgba($body-color, 0.75);
+    border-color: rgba($body-color, 0.3);
+}
+
+// Education logos — fix to the same height regardless of aspect ratio.
+// UCB (5:1 wide strip) needs a wider max-width to reach 2rem tall.
+.cert-badges.edu-badges img {
+    height: 2.5rem;
+    max-height: none;
+    max-width: 14rem;
+}
+
+// Clickable cert-badge links — subtle lift on hover
+.cert-badges a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: $_radius-sm;
+    transition: transform $_anim-fast ease, opacity $_anim-fast ease, filter $_anim-fast ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        filter: drop-shadow(0 3px 6px rgba($body-color, 0.2));
+        opacity: 0.9;
+    }
+}
+
 // ===========================
 // INDEX / ABOUT PAGE (Solana template)
 // ===========================
-// Layout: silviacanelon.com  |  Social icons: mickael.canouil.fr hero banner
 .quarto-about-solana {
 
     // Profile image — PNG with circular shape, so drop-shadow follows the
@@ -783,14 +866,15 @@ hr {
 
             // Special styling for sponsor link
             &:has(iconify-icon[icon*="heart"]) {
-                background-color: rgba($_color-sponsor, 0.1);
-                border-color: rgba($_color-sponsor, 0.3);
-                color: $_color-sponsor;
+                background-color: rgba(var(--mb-accent), 0.1);
+                border-color: rgba(var(--mb-accent), 0.3);
+                color: var(--mb-accent);
 
                 &:hover {
-                    background-color: rgba($_color-sponsor, 0.2);
-                    border-color: rgba($_color-sponsor, 0.5);
-                    color: darken($_color-sponsor, 10%);
+                    background-color: rgba(var(--mb-accent), 0.2);
+                    border-color: rgba(var(--mb-accent), 0.5);
+
+                    color: color-mix(in srgb, var(--mb-accent) 10%);
                 }
             }
         }
@@ -888,6 +972,26 @@ hr {
     .footer-icon {
         margin-left: 0;
         margin-right: 0.6rem;
+    }
+
+    // Trestles about page: move vertical separator to between photo and content.
+    // Wrapped in the same @media Quarto uses so cascade specificity matches.
+    @media screen and (min-width: $_breakpoint-lg) {
+
+        // Quarto puts the trestles divider on about-contents (border-left).
+        // In RTL flex that border ends up on the wrong (outer) edge.
+        // Null it and flip to border-right so it sits between contents (left) and entity (right).
+        .quarto-about-trestles .about-entity {
+            padding-right: 0;
+            padding-left: 2em;
+        }
+
+        .quarto-about-trestles .about-contents {
+            border-left: none !important;
+            border-right: 1px solid rgba($body-color, 0.15);
+            padding-left: 0;
+            padding-right: 2em;
+        }
     }
 
     // Solana index page: flip text alignment for RTL (desktop only)
