@@ -21,3 +21,6 @@ _build/
 docs/
 
 /.quarto/
+
+# MacOS
+.DS_Store

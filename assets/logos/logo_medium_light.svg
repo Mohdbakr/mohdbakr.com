@@ -1,6 +1,6 @@
-<svg width="125" height="80" viewBox="0 0 125 80" xmlns="http://www.w3.org/2000/svg">
-  <rect width="125" height="80" fill="none" rx="15" />
-  <g transform="translate(80, 40)">
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="250" fill="none" rx="30" />
+  <g transform="translate(255, 125) scale(3.2)">
     <g transform="translate(-38, 0) rotate(270)">
       <path d="M -35 -35 L 35 -35 L 0 0 L 35 35 L -35 35" fill="none" stroke="#352A26" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" />
     </g>
@@ -10,5 +10,3 @@
     <circle cx="2" cy="0" r="7" fill="#A16207" stroke="#FAFAF9" stroke-width="1.5" />
   </g>
 </svg>
-
-

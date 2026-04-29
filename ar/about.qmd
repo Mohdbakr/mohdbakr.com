@@ -1,25 +1,130 @@
 ---
-title: "محمد بكر"
-subtitle: "CIA · CFE · عالم بيانات"
-# image: ../assets/images/profile-pic.jpg
-# image-alt: "صورة محمد بكر"
+title: ""
+subtitle: "حصلتُ على لقب 'عالم بيانات' رسمياً في عام ٢٠٢٥، لكنّ جوهر هذا العمل بدأ قبل ذلك بكثير؛ من نماذج الـ (Clustering) لكشف الاحتيال، إلى التنبؤ بالإيرادات باستخدام نماذج ARIMA وSARIMAX، وصولاً إلى بناء تطبيق بلغة بايثون لمراقبة الدورة الشرائية بالكامل — كل ذلك أنجزته من قلب الميدان المالي قبل الحصول على الدرجة العلمية."
+image: ../assets/images/profile-pic.jpg
+image-alt: "صورة محمد بكر"
 about:
   template: trestles
   image-width: 14em
-  image-shape: rounded
   id: hero-heading
   links:
     - icon: linkedin
-      aria-label: "لينكدإن"
+      text: LinkedIn
       href: https://www.linkedin.com/in/mohdbakr/
+      aria-label: "LinkedIn logo linking to Mohamed Bakr account"
+      target: _blank
+      rel: noopener noreferrer
     - icon: github
-      aria-label: "جيتهب"
+      text: GitHub
       href: https://github.com/Mohdbakr
-    - icon: globe
-      aria-label: "الموقع"
-      href: https://portfolio.mohdbakr.com
-sidebar: false
+      aria-label: "GitHub logo linking to Mohamed Bakr account"
+      target: _blank
+      rel: noopener noreferrer
+    - text: '{{< fa envelope title="Contact" >}} تواصل معي'
+      href: /ar/contact.html
+      aria-label: "Contact logo linking to Mohamed Bakr contact page"
+
 page-layout: full
 ---
 
-coming soon...
+::: {#hero-heading}
+<div class="d-flex flex-column align-items-center">
+![](../assets/logos/logo_light.svg){.author-logo .light-content}
+![](../assets/logos/logo_dark.svg){.author-logo .dark-content}
+
+<h1 class="about-title"><span class="brand-name-dim">محمد</span> <span class="brand-name-bold">بكر</span></h1>
+
+<p class="about-subtitle" style="color: var(--bs-secondary); font-weight: 600; letter-spacing: 0.08em; margin-top: 0.25em; margin-bottom: 0.5em; text-align: center;">CIA · CFE · DATA SCIENTIST</p>
+</div>
+
+
+
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+جاء [ماجستير علوم المعلومات والبيانات](https://ischoolonline.berkeley.edu/data-science/curriculum/){target="_blank"} من [جامعة كاليفورنيا بيركلي](https://www.ischool.berkeley.edu/){target="_blank"} ليُرسّخ الأسس الرياضية الرسمية لخبرتي المهنية. أدمجُ اليوم هذا التأهيل الأكاديمي مع خلفيتي كمدير للتخطيط والتحليل المالي ومدقق داخلي وفاحص احتيال معتمد لبناء حلول تعتمد على نماذج اللغة الكبيرة والاستدلال الإحصائي للعملاء.
+
+أما الخط العربي، فهو ممارستي الموازية التي تفرض عليّ ذات التحدي: كيف نوجد هندسة دقيقة ونظاماً صارماً في قلب الحرية الإبداعية.
+:::
+::: {.g-col-12 .g-col-md-6}
+[![إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ (سورة فاطر: 28)](../assets/images/Mohamed-Bakr-Arabic-Calligraphy.png){fig-alt="لقطة قريبة واحترافية تُظهر محمد بكر من الجانب، وهو يركز بعمق على ممارسة فن الخط العربي التقليدي باستخدام القصبة والحبر الأسود لكتابة الآية الكريمة: 'إنما يخشى الله من عباده العلماء' (سورة فاطر: 28) بخط الرقعة. تظهر في الصورة أيضاً محبرة موضوعة على الورق." .about-image}](https://www.instagram.com/mbakr84/){target="_blank" rel="noopener noreferrer"}
+::: 
+
+:::
+
+:::
+
+## ما أفعله
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+
+تستهويني المسائل التي تفرض فيها الخبرة التخصصية (Domain Fluency) شكل النموذج، وليس مجرد ضبط معاييره. ففي فحص الاحتيال، معرفة كواليس 'مخططات الصرف غير المشروع' هي ما يحدد ملامح البيانات التي نهندسها. وفي التخطيط والتحليل المالي، فهم كيفية بناء الميزانيات هو ما يكشف لنا أي الانحرافات يستحق التقصي.
+
+أبني الحلول بسرعة، وأختبرها بعقلية 'المتشكك'، ولا أعتمد نموذجاً حتى أستوعب ما تعلمه فعلياً، بعيداً عن مجرد اجتياز المقاييس الرقمية. هذا النهج وليد خبرتي في التدقيق؛ فالتسوية المالية الدقيقة هي في جوهرها اختبار لمدى قدرتك على كشف الاحتيال الأكثر تعقيداً.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+في الفصول الأولى من مسيرتي المهنية، قمتُ ببناء حلول تقنية متكاملة شملت جمع البيانات، والتحليل الاستكشافي، والمعالجة، وبناء نموذج وصفي، وصولاً إلى التقارير المرفوعة لمجلس الإدارة — لتقييم مشاريع رأسمالية ضخمة وتحديد مسببات الانحرافات المالية بدقة. كان المسمى الوظيفي حينها 'تدقيقاً'، لكن الجوهر كان 'علوم بيانات' قبل أن يذيع صيتها.
+
+أعمل بكفاءة أكبر عند تقاطع الخبرة المجالية والصرامة الكمية حيث يُشكّل السؤال التجاري المعادلة الرياضية، والمعادلة تُصقل السؤال.
+:::
+
+:::
+
+## التعليم والشهادات
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+
+#### {{< fa graduation-cap >}} التعليم
+
+- **ماجستير علوم المعلومات والبيانات**
+  *جامعة كاليفورنيا بيركلي* . ٢٠٢٥
+- **بكالوريوس التجارة (محاسبة)**
+  *جامعة الإسكندرية* . ٢٠٠٤
+
+::: {.cert-badges .edu-badges}
+[![جامعة كاليفورنيا بيركلي](../assets/images/credentials/ucb.png)](https://www.ischool.berkeley.edu/){target="_blank" rel="noopener noreferrer"}
+[![جامعة الإسكندرية](../assets/images/credentials/alexandria.png)](https://alexu.edu.eg){target="_blank" rel="noopener noreferrer"}
+:::
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+#### {{< fa certificate >}} الشهادات
+
+- **مدقق داخلي معتمد (CIA)** · *معهد المدققين الداخليين*
+- **فاحص احتيال معتمد (CFE)** · *جمعية فاحصي الاحتيال المعتمدين*
+
+::: {.cert-badges}
+[![مدقق داخلي معتمد](../assets/images/credentials/cia.png)](https://www.theiia.org){target="_blank" rel="noopener noreferrer"}
+[![فاحص احتيال معتمد](../assets/images/credentials/cfe.png)](https://www.acfe.com){target="_blank" rel="noopener noreferrer"}
+:::
+
+:::
+
+:::
+
+## المستجدات
+
+:::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+#### المشاريع
+::: {#project}
+:::
+[عرض الكل &larr;](../projects.html){.about-links .subtitle}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### المقالات
+::: {#blog}
+:::
+[عرض الكل &larr;](../posts/index.html){.about-links .subtitle}
+:::
+
+::::
