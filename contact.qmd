@@ -1,16 +1,59 @@
 ---
 pagetitle: Mohamed Bakr - Contact
-title: Send me a note
-name: Contact Form
+title: Get in Touch
 page-layout: article
-format: 
-  html: 
-    grid:
-      margin-width: 0px
-      sidebar-width: 0px
-
-# header-includes: >
-#   <link rel="stylesheet" href="assets/contact.css">
-# resources:
-#   - assets/contact.css
 ---
+
+::: {#contact}
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6 .contact-info}
+
+### {{< fa comments >}} Let's connect
+
+I'd love to hear about your project, a data science challenge, or anything else on your mind. Fill out the form and I'll get back to you.
+
+**Typically responds within 24–48 hours.**
+
+::: {.contact-details}
+
+<div class="contact-social">
+  <a href="https://www.linkedin.com/in/mohdbakr/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/Mohdbakr" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+</div>
+
+:::
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<form action="https://formspree.io/f/xqkrnzvp" method="POST">
+
+::: {.grid .contact-form-grid}
+::: {.g-col-12 .g-col-md-6}
+<input type="text" class="form-control" placeholder="Full Name" id="name" name="name" required>
+:::
+::: {.g-col-12 .g-col-md-6}
+<input type="text" class="form-control" placeholder="Phone" id="phone" name="phone" required>
+:::
+::: {.g-col-12}
+<input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required>
+:::
+::: {.g-col-12}
+<input type="text" class="form-control" placeholder="Enter Subject" id="subject" name="subject" required>
+:::
+::: {.g-col-12}
+<textarea class="form-control" placeholder="Your message…" id="message" name="message" rows="6" required></textarea>
+:::
+::: {.g-col-12 .text-end}
+<button type="submit" class="btn btn-primary">{{< fa paper-plane >}} &nbsp;Send</button>
+:::
+:::
+
+</form>
+
+:::
+
+:::
+:::
