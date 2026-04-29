@@ -1,0 +1,59 @@
+---
+pagetitle: Mohamed Bakr - تواصل معي
+title: تواصل معي
+page-layout: article
+---
+
+::: {#contact}
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6 .contact-info}
+
+### {{< fa comments >}} هيّا نتحدث
+
+يسعدني سماع فكرتك سواء تعلّق الأمر بمشروع لتحليل البيانات، أو تحدٍّ تقني، أو مجرد حديث حول علوم البيانات والذكاء الاصطناعي. املأ النموذج وسأرد عليك قريباً.
+
+**أردّ عادةً خلال ٢٤–٤٨ ساعة.**
+
+::: {.contact-details}
+
+<div class="contact-social">
+  <a href="https://www.linkedin.com/in/mohdbakr/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/Mohdbakr" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+</div>
+
+:::
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<form action="https://formspree.io/f/xqkrnzvp" method="POST">
+
+::: {.grid .contact-form-grid}
+::: {.g-col-12 .g-col-md-6}
+<input type="text" class="form-control" placeholder="الاسم واللقب" id="name" name="name" required>
+:::
+::: {.g-col-12 .g-col-md-6}
+<input type="text" class="form-control" placeholder="رقم الهاتف" id="phone" name="phone" required>
+:::
+::: {.g-col-12}
+<input type="email" class="form-control" placeholder="البريد الإلكتروني" id="email" name="email" required>
+:::
+::: {.g-col-12}
+<input type="text" class="form-control" placeholder="الموضوع" id="subject" name="subject" required>
+:::
+::: {.g-col-12}
+<textarea class="form-control" placeholder="رسالتك…" id="message" name="message" rows="6" required></textarea>
+:::
+::: {.g-col-12 .text-start}
+<button type="submit" class="btn btn-primary">{{< fa paper-plane >}} &nbsp;إرسال</button>
+:::
+:::
+
+</form>
+
+:::
+
+:::
+:::

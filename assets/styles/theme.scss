@@ -1023,3 +1023,101 @@ body.quarto-dark .cert-badges img {
         }
     }
 }
+
+// ===========================
+// CONTACT PAGE
+// ===========================
+
+#contact {
+    // Left info column: vertical separator, tighter paragraph spacing
+    .contact-info {
+        padding-right: $_space-xl;
+        border-right: 1px solid rgba($body-color, 0.1);
+
+        h3 {
+            margin-bottom: $_space-sm;
+        }
+
+        p {
+            margin-bottom: $_space-sm;
+        }
+
+        .contact-details {
+            margin-top: $_space-md;
+            margin-bottom: $_space-md;
+
+            p {
+                margin-bottom: $_space-xs;
+            }
+        }
+
+        // Inline social icon row — icon-only, no text
+        .contact-social {
+            display: flex;
+            gap: $_space-md;
+            align-items: center;
+            margin-bottom: $_space-sm;
+
+            a {
+                color: rgba($body-color, 0.55);
+                font-size: 1.6rem;
+                line-height: 1;
+                text-decoration: none;
+                transition: color $_anim-fast ease, transform $_anim-fast ease;
+
+                &:hover {
+                    color: var(--mb-primary);
+                    transform: translateY(-3px);
+                }
+            }
+        }
+
+        @media (max-width: $_breakpoint-md) {
+            padding-right: 0;
+            border-right: none;
+            border-bottom: 1px solid rgba($body-color, 0.1);
+            padding-bottom: $_space-lg;
+            margin-bottom: $_space-sm;
+        }
+    }
+
+    // Form controls — square corners, brand-color focus, fixed input height
+    .form-control {
+        border-radius: 0;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: var(--mb-primary);
+    }
+
+    input.form-control {
+        height: 45px;
+    }
+
+    // Tighter row gap between form fields
+    .contact-form-grid {
+        row-gap: $_space-sm;
+    }
+
+    // Faded placeholder text
+    .form-control::placeholder {
+        color: $body-color;
+        opacity: 0.35;
+    }
+}
+
+// RTL: flip the separator to the left side
+[dir="rtl"] #contact {
+    .contact-info {
+        padding-right: 0;
+        padding-left: $_space-xl;
+        border-right: none;
+        border-left: 1px solid rgba($body-color, 0.1);
+
+        @media (max-width: $_breakpoint-md) {
+            padding-left: 0;
+            border-left: none;
+        }
+    }
+}
