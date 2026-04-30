@@ -14,7 +14,7 @@
 :root {
     --mb-primary: var(--quarto-scss-export-primary);
     --mb-secondary: var(--quarto-scss-export-secondary);
-    --mb-accent: var(--quarto-scss-export-primary);
+    --mb-accent: var(--quarto-scss-export-secondary);
     --mb-accent-light: var(--quarto-scss-export-navbar-hl);
 }
 
@@ -33,24 +33,7 @@ $_link-underline-color-hover: $link-color;
 $_link-underline-thickness: 1px;
 $_link-underline-thickness-hover: 2px;
 
-// ===========================
-// LINK STYLING PATTERNS
-// ===========================
-// Pattern A (Content Links): Underline with animated thickness/colour
-//   - Use for inline text links in main content, thanks box, etc.
-//   - Variables: $_link-underline-*, $_link-transition
-//
-// Pattern B (Metadata Links): Toggle text-decoration on hover
-//   - Use for author names, dates, meta info in academic/magazine styles
-//   - Keeps UI clean, underline appears only on hover
-//
-// Pattern C (Navigation): Animated pseudo-element underline
-//   - Use for navbar, footer navigation
-//   - ::after element expands from centre or left
-//
-// Pattern D (Interactive UI): Transform effects
-//   - Use for social links, breadcrumbs where motion adds value
-//   - scale() for emphasis, translateX/Y for directional cues
+// Link styling patterns A–D — see CLAUDE.md § Link Styling Patterns
 
 
 // ===========================
@@ -96,11 +79,6 @@ $_shadow-md: 0 4px 12px rgba($body-color, 0.1);
 $_shadow-lg: 0 8px 24px rgba($body-color, 0.15);
 
 // ===========================
-// SPECIAL COLOURS
-// ===========================
-$_color-sponsor: $brand-sponsor-color;
-
-// ===========================
 // UTILITY FUNCTIONS
 // ===========================
 // Helper function to mix background and foreground colors
@@ -144,6 +122,27 @@ button:focus-visible,
 div:empty:not(#code-annotation-line-highlight):not(#code-annotation-line-highlight-gutter),
 p:empty {
     display: none;
+}
+
+// Pattern A — inline content links: animated underline thickness + colour
+.quarto-body main {
+
+    p,
+    li,
+    blockquote {
+        a:not(.btn) {
+            text-decoration-color: $_link-underline-color;
+            text-decoration-thickness: $_link-underline-thickness;
+            transition:
+                text-decoration-color $_link-transition-duration $_link-transition-timing,
+                text-decoration-thickness $_link-transition-duration $_link-transition-timing;
+
+            &:hover {
+                text-decoration-color: $_link-underline-color-hover;
+                text-decoration-thickness: $_link-underline-thickness-hover;
+            }
+        }
+    }
 }
 
 // ===========================
@@ -248,7 +247,7 @@ p:empty {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border-bottom: 1px solid transparent;
-    background-color: transparent !important;
+    background-color: transparent;
     padding-top: 1rem;
     padding-bottom: 1rem;
     transition: background-color $_anim-slow $_easing-standard,
@@ -264,7 +263,7 @@ p:empty {
     }
 
     &.scrolled {
-        background-color: rgba($navbar-bg, 0.85) !important;
+        background-color: rgba($navbar-bg, 0.85);
         padding-top: 0.3rem;
         padding-bottom: 0.3rem;
         border-bottom-color: rgba($navbar-fg, 0.15);
@@ -303,7 +302,7 @@ p:empty {
             &:hover,
             &:focus {
                 background-color: rgba($navbar-fg, 0.15);
-                color: var(--mb-accent);
+                color: var(--mb-primary);
             }
         }
     }
@@ -313,10 +312,10 @@ p:empty {
 // At page top: dark text for transparent bg; scrolled: light text for dark bg.
 .navbar[data-bs-theme="dark"] {
     --bs-navbar-color: #{$body-color};
-    --bs-navbar-hover-color: var(--mb-accent);
-    --bs-navbar-active-color: var(--mb-accent);
+    --bs-navbar-hover-color: var(--mb-primary);
+    --bs-navbar-active-color: var(--mb-primary);
     --bs-navbar-brand-color: #{$body-color};
-    --bs-navbar-brand-hover-color: var(--mb-accent);
+    --bs-navbar-brand-hover-color: var(--mb-primary);
 
     // Must target .navbar-toggler-icon directly because Bootstrap's
     // [data-bs-theme=dark] .navbar-toggler-icon sets the variable on the
@@ -355,12 +354,6 @@ p:empty {
         &.active {
             opacity: 1;
         }
-    }
-
-    a.nav-link,
-    a.nav-link:after,
-    a.nav-link:before {
-        transition: $_link-transition;
     }
 
     a.nav-link {
@@ -668,7 +661,7 @@ hr {
         border-color $_anim-standard ease;
 
     &:hover {
-        // box-shadow: 0 0 10px $body-color;
+        box-shadow: 0 0 10px $body-color;
         transform: translateY(-5px);
         border-color: var(--mb-accent);
     }
@@ -683,11 +676,10 @@ hr {
 }
 
 // About entity title hover effect
-.about-entity {
-    #title-block-header.quarto-title-block.default .quarto-title .title:hover {
-        color: $body-color;
-        text-shadow: 0 0 10px $body-color;
-    }
+.about-entity .title:hover {
+    color: $body-color;
+    text-shadow: 0 0 10px $body-color;
+
 }
 
 // Author name: dim first name, bold last name for visual hierarchy
@@ -771,7 +763,6 @@ body.quarto-dark .cert-badges img {
     // Profile image — PNG with circular shape, so drop-shadow follows the
     // actual image contour (box-shadow would just hit the rectangular bounding box)
     img.about-image {
-        border-radius: $_radius-lg !important;
         filter:
             drop-shadow(0 0 18px color-mix(in srgb, var(--mb-accent) 40%, transparent)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
         transition: filter $_anim-standard $_easing-standard,
@@ -788,7 +779,7 @@ body.quarto-dark .cert-badges img {
     .title {
         font-size: 3rem;
         font-weight: 700;
-        line-height: 1.1em !important;
+        line-height: 1.1em;
     }
 
     .subtitle {
@@ -800,7 +791,7 @@ body.quarto-dark .cert-badges img {
 
     // --- Desktop layout (text right, image left) ---
     .entity-contents {
-        text-align: right !important;
+        text-align: right;
         padding: 0 2em 0 2em;
     }
 
@@ -809,9 +800,9 @@ body.quarto-dark .cert-badges img {
     }
 
     .about-links.subtitle {
-        font-size: 1em !important;
+        font-size: 1em;
         font-family: "Red Hat Text";
-        justify-content: flex-end !important;
+        justify-content: flex-end;
     }
 
     .about-image {
@@ -826,55 +817,51 @@ body.quarto-dark .cert-badges img {
             flex-wrap: wrap;
             justify-content: flex-end !important;
             gap: 0.75rem;
-            column-gap: 0.75rem;
-            font-size: 1.2em !important;
-        }
 
-        .about-link {
-            display: inline-flex;
-            flex: 0 0 auto;
-            align-items: center;
-            justify-content: center;
-            padding: 0.65rem;
-            width: 2.75rem;
-            height: 2.75rem;
-            background-color: rgba($body-color, 0.08);
-            border: 1px solid rgba($body-color, 0.15);
-            border-radius: $_radius-md;
-            color: rgba($body-color, 0.85);
-            text-decoration: none;
-            transition: all $_anim-standard $_easing-standard;
-            font-size: 1.1rem;
-
-            .about-link-text {
-                display: flex;
+            .about-link {
+                display: inline-flex;
                 align-items: center;
-                gap: $_space-sm;
-            }
+                justify-content: center;
+                padding: 0.6rem 1rem;
+                width: 2.75rem;
+                height: 2.75rem;
+                background-color: rgba($body-color, 0.08);
+                border: 1px solid rgba($body-color, 0.15);
+                border-radius: $_radius-md;
+                color: rgba($body-color, 0.85);
+                text-decoration: none;
+                transition: all $_anim-standard $_easing-standard;
+                font-size: 1.1rem;
 
-            &:hover {
-                background-color: rgba($body-color, 0.12);
-                border-color: rgba($body-color, 0.3);
-                transform: translateY(-2px);
-                box-shadow: $_shadow-md;
-                color: $body-color;
-            }
-
-            &:active {
-                transform: translateY(0);
-            }
-
-            // Special styling for sponsor link
-            &:has(iconify-icon[icon*="heart"]) {
-                background-color: rgba(var(--mb-accent), 0.1);
-                border-color: rgba(var(--mb-accent), 0.3);
-                color: var(--mb-accent);
+                .about-link-text {
+                    display: flex;
+                    align-items: center;
+                    gap: $_space-sm;
+                }
 
                 &:hover {
-                    background-color: rgba(var(--mb-accent), 0.2);
-                    border-color: rgba(var(--mb-accent), 0.5);
+                    background-color: rgba($body-color, 0.12);
+                    border-color: rgba($body-color, 0.3);
+                    transform: translateY(-2px);
+                    box-shadow: $_shadow-md;
+                    color: $body-color;
+                }
 
-                    color: color-mix(in srgb, var(--mb-accent) 10%);
+                &:active {
+                    transform: translateY(0);
+                }
+
+                // Special styling for sponsor link
+                &:has(iconify-icon[icon*="heart"]) {
+                    background-color: rgba($brand-sponsor-color, 0.1);
+                    border-color: rgba($brand-sponsor-color, 0.3);
+                    color: $brand-sponsor-color;
+
+                    &:hover {
+                        background-color: rgba($brand-sponsor-color, 0.2);
+                        border-color: rgba($brand-sponsor-color, 0.5);
+                        color: darken($brand-sponsor-color, 10%);
+                    }
                 }
             }
         }
@@ -883,35 +870,35 @@ body.quarto-dark .cert-badges img {
     // --- Mobile (screens up to ~992px) ---
     @media screen and (max-width: $_breakpoint-lg) {
         .entity-contents {
-            order: 2 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            text-align: center !important;
+            order: 2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
 
         .subtitle {
-            text-align: center !important;
+            text-align: center;
         }
 
         .about-entity .about-links {
             flex-direction: row !important;
             justify-content: center !important;
-            flex-wrap: wrap !important;
-            font-size: 1em !important;
+            flex-wrap: wrap;
+            font-size: 1em;
         }
 
         .about-contents {
-            padding: 0 !important;
+            padding: 0;
         }
 
         .about-links.subtitle {
-            justify-content: center !important;
+            justify-content: center;
         }
 
         .about-image {
-            order: 1 !important;
+            order: 1;
             margin-top: 0;
-            padding: 0 2em !important;
+            padding: 0 2em;
         }
     }
 }
@@ -923,112 +910,12 @@ body.quarto-dark .cert-badges img {
     }
 }
 
-/* ── RTL corrections ──────────────────────────────── */
-[dir="rtl"] {
-
-    // Override Bootstrap's body rule (which blocks simple inheritance from html)
-    body {
-        font-family: "Tajawal", sans-serif;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: "Readex Pro", sans-serif;
-    }
-
-    .nav-footer {
-        direction: ltr;
-    }
-
-    /* Bootstrap physical margins cause nav items to bunch in RTL flex.
-       Reset and use justify-content instead. */
-    .navbar-collapse {
-        justify-content: space-between !important;
-    }
-
-    /* dropdown-menu-end uses right:0 (physical), opens off-screen left in RTL. */
-    .navbar .dropdown-menu-end {
-        right: auto !important;
-        left: 0 !important;
-    }
-
-    .navbar-collapse .navbar-nav.me-auto {
-        margin-right: 0 !important;
-    }
-
-    .navbar-collapse .navbar-nav.ms-auto {
-        margin-left: 0 !important;
-    }
-
-    .series-live-card {
-        border-left: none;
-        border-right: 4px solid var(--mb-accent);
-    }
-
-    .footer-icon {
-        margin-left: 0;
-        margin-right: 0.6rem;
-    }
-
-    // Trestles about page: move vertical separator to between photo and content.
-    // Wrapped in the same @media Quarto uses so cascade specificity matches.
-    @media screen and (min-width: $_breakpoint-lg) {
-
-        // Quarto puts the trestles divider on about-contents (border-left).
-        // In RTL flex that border ends up on the wrong (outer) edge.
-        // Null it and flip to border-right so it sits between contents (left) and entity (right).
-        .quarto-about-trestles .about-entity {
-            padding-right: 0;
-            padding-left: 2em;
-        }
-
-        .quarto-about-trestles .about-contents {
-            border-left: none !important;
-            border-right: 1px solid rgba($body-color, 0.15);
-            padding-left: 0;
-            padding-right: 2em;
-        }
-    }
-
-    // Solana index page: flip text alignment for RTL (desktop only)
-    @media screen and (min-width: $_breakpoint-lg) {
-        .quarto-about-solana {
-            .entity-contents {
-                text-align: left !important;
-            }
-
-            .about-links.subtitle {
-                justify-content: flex-end !important;
-            }
-
-            .about-entity .about-links {
-                justify-content: flex-end !important;
-            }
-
-            .about-contents {
-                padding: 0 2em 0 0 !important;
-            }
-
-            .about-image {
-                padding: 0 0 0 2em;
-            }
-
-            .about-contents p:has(.btn) {
-                text-align: left;
-            }
-        }
-    }
-}
-
 // ===========================
 // CONTACT PAGE
 // ===========================
 
 #contact {
+
     // Left info column: vertical separator, tighter paragraph spacing
     .contact-info {
         padding-right: $_space-xl;
@@ -1059,7 +946,8 @@ body.quarto-dark .cert-badges img {
             margin-bottom: $_space-sm;
 
             a {
-                color: rgba($body-color, 0.55);
+                display: inline-block;
+                color: rgba($body-color, 0.6);
                 font-size: 1.6rem;
                 line-height: 1;
                 text-decoration: none;
@@ -1081,13 +969,7 @@ body.quarto-dark .cert-badges img {
         }
     }
 
-    // Form controls — square corners, brand-color focus, fixed input height
-    .form-control {
-        border-radius: 0;
-    }
-
     .form-control:focus {
-        box-shadow: none;
         border-color: var(--mb-primary);
     }
 
@@ -1102,22 +984,121 @@ body.quarto-dark .cert-badges img {
 
     // Faded placeholder text
     .form-control::placeholder {
-        color: $body-color;
-        opacity: 0.35;
+        opacity: 0.6;
     }
 }
 
-// RTL: flip the separator to the left side
-[dir="rtl"] #contact {
-    .contact-info {
-        padding-right: 0;
-        padding-left: $_space-xl;
-        border-right: none;
-        border-left: 1px solid rgba($body-color, 0.1);
+/* ── RTL corrections ──────────────────────────────── */
+[dir="rtl"] {
 
-        @media (max-width: $_breakpoint-md) {
-            padding-left: 0;
+    // Override Bootstrap's body rule (which blocks simple inheritance from html)
+    body {
+        font-family: "Tajawal", sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Readex Pro", sans-serif;
+    }
+
+    .nav-footer {
+        direction: ltr;
+    }
+
+    /* Bootstrap physical margins cause nav items to bunch in RTL flex.
+       Reset and use justify-content instead. */
+    .navbar-collapse {
+        justify-content: space-between;
+    }
+
+    /* dropdown-menu-end uses right:0 (physical), opens off-screen left in RTL. */
+    .navbar .dropdown-menu-end {
+        right: auto;
+        left: 0;
+    }
+
+    .navbar-collapse .navbar-nav.me-auto {
+        margin-right: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+    }
+
+    .series-live-card {
+        border-left: none;
+        border-right: 4px solid var(--mb-accent);
+    }
+
+    .footer-icon {
+        margin-left: 0;
+        margin-right: 0.6rem;
+    }
+
+    #contact {
+        .contact-info {
+            padding-right: 0;
+            padding-left: $_space-xl;
+            border-right: none;
+            border-left: 1px solid rgba($body-color, 0.1);
+
+            @media (max-width: $_breakpoint-md) {
+                padding-left: 0;
+                border-left: none;
+            }
+        }
+    }
+
+    // Trestles about page: move vertical separator to between photo and content.
+    // Wrapped in the same @media Quarto uses so cascade specificity matches.
+    @media screen and (min-width: $_breakpoint-lg) {
+
+        // Quarto puts the trestles divider on about-contents (border-left).
+        // In RTL flex that border ends up on the wrong (outer) edge.
+        // Null it and flip to border-right so it sits between contents (left) and entity (right).
+        .quarto-about-trestles .about-entity {
+            padding-right: 0;
+            padding-left: 2em;
+        }
+
+        .quarto-about-trestles .about-contents {
             border-left: none;
+            border-right: 1px solid rgba($body-color, 0.15);
+            padding-left: 0;
+            padding-right: 2em;
+        }
+    }
+
+    // Solana index page: flip text alignment for RTL (desktop only)
+    @media screen and (min-width: $_breakpoint-lg) {
+        .quarto-about-solana {
+            .entity-contents {
+                text-align: left;
+            }
+
+            .about-links.subtitle {
+                justify-content: flex-end;
+            }
+
+            .about-entity .about-links {
+                justify-content: flex-end;
+            }
+
+            .about-contents {
+                padding: 0 2em 0 0 !important;
+            }
+
+            .about-image {
+                padding: 0 0 0 2em;
+            }
+
+            .about-contents p:has(.btn) {
+                text-align: left;
+            }
         }
     }
 }
