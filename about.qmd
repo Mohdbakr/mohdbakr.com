@@ -1,6 +1,6 @@
 ---
 title: ""
-subtitle: 'The title "Data Scientist" arrived in 2025, but the craft was honed long before. The work behind it started long before with building clustering models for fraud detection during internal audit engagements, developing ARIMA and SARIMAX revenue forecasts within finance departments, and engineering a Python-based purchase-to-payment monitoring application that replaced traditional audit cycles years before I pursued a formal degree.'
+subtitle: 'The title "Data Scientist" arrived in 2025. The work behind it had been there for years: building clustering models for fraud detection during internal audit engagements, developing ARIMA and SARIMAX revenue forecasts within finance departments, and engineering a Python-based purchase-to-payment monitoring application that replaced traditional audit cycles years before I pursued a formal degree.'
 image: assets/images/profile-pic.jpg
 image-alt: "Mohamed Bakr profile photo"
 about:
@@ -39,9 +39,9 @@ page-layout: full
 
 ::: {.grid}
 ::: {.g-col-12 .g-col-md-6}
-The [Berkeley MIDS](https://ischoolonline.berkeley.edu/data-science/curriculum/){target="_blank"} from the [School of Information](https://www.ischool.berkeley.edu/){target="_blank"} provided the formal mathematical foundations for my work. I now integrate this academic rigor with my background as a FP&A manager, CIA and CFE to build ML, GenAI, and statistical inference solutions for clients.
+The [Berkeley MIDS](https://ischoolonline.berkeley.edu/data-science/curriculum/){target="_blank"} from the [School of Information](https://www.ischool.berkeley.edu/){target="_blank"} brought together statistics, ML, data engineering, and causal inference into a coherent technical foundation. I combine that with a background in FP&A, internal audit, and fraud examination to build ML, GenAI, and statistical inference solutions.
 
-Arabic calligraphy is my parallel practice a discipline that demands the same focus: finding precise, geometric structure within apparent freedom.
+Arabic calligraphy is my parallel practice—a discipline that demands full presence, and offers in return a quiet far from the noise of numbers.
 :::
 ::: {.g-col-12 .g-col-md-6}
 [!['Those truly fear Allah, among His Servants, who have knowledge' — Fatir:28](assets/images/Mohamed-Bakr-Arabic-Calligraphy.png){fig-alt="A professional close-up photograph of Mohamed Bakr in profile, deeply focused on performing traditional Arabic calligraphy with a reed pen (Qalam) and black ink. He is writing the Quranic verse: 'إنما يخشى الله من عباده العلماء' ('Those truly fear Allah, among His Servants, who have knowledge' — Fatir:28) in Ruq'ah script. The photo also features a traditional ink well positioned on the parchment." .about-image}](https://www.instagram.com/mbakr84/){target="_blank" rel="noopener noreferrer"}
@@ -58,11 +58,11 @@ Arabic calligraphy is my parallel practice a discipline that demands the same fo
 
 The problems I find most compelling are those where domain fluency dictates the model’s architecture, not just its tuning. In fraud examination, understanding the mechanics of a disbursement scheme determines which features must be engineered. In FP&A, knowing how a budget is structurally assembled determines which residuals actually deserve attention.
 
-I build fast, test adversarially, and refuse to deploy until I understand what a model has actually learned—beyond just passing its performance metrics. This habit is a direct inheritance from the world of audit: a clean reconciliation is not just a goal; it is a rigorous test of whether you are capable of catching a well-hidden fraud.
+My background in audit shapes how I approach model validation: a clean reconciliation still needs an explanation. I won't deploy until I understand what a model actually learned, not just that it passed its metrics.
 :::
 
 ::: {.g-col-12 .g-col-md-6}
-In the earlier chapters of my career, I built end-to-end solutions that spans from data ingestion, EDA, cleaning, descriptive modeling, and board-level reporting to evaluate large-scale capital projects and pinpoint the drivers of variance. The job title was "Audit," but the work was data science before it had a name.
+Early in my career, I built an end-to-end solution spanning data ingestion, EDA, and descriptive modeling through to board-level reporting — visualizations and dynamic reports translated into language executives could act on. The job title said Audit. The work was data science before it had a name.
 
 I operate most effectively at the intersection of domain expertise and quantitative rigor — where the business problem shapes the equation, and the equation refines the question.
 :::
