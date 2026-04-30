@@ -1,63 +1,60 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Project
 
-## Project Overview
-
-A bilingual (English / Arabic) educational website covering practical data science and ML topics — statistics for business problems, probability, machine learning foundations, and related applied topics. Built with **Quarto** (`type: website`) and deployed to GitHub Pages via GitHub Actions.
+Personal portfolio and blog for Mohamed Bakr — bilingual English/Arabic. Built with **Quarto** (`type: website`), deployed to GitHub Pages via GitHub Actions.
 
 ## Commands
 
-**Setup:**
 ```bash
-uv sync
+uv sync                              # install dependencies
+quarto preview                       # hot-reload dev server (no execution)
+quarto render                        # full build → _site/
+quarto render about.qmd              # single page (faster iteration)
+quarto render --no-execute           # layout/style changes only
 ```
 
-**Local preview (hot-reloads on save, does not execute notebooks):**
-```bash
-quarto preview
-```
+## File Map
 
-**Full build (execute notebooks + generate static HTML):**
-```bash
-quarto render
-```
+| File | Purpose |
+| --- | --- |
+| `_quarto.yml` | Site config: navbar, footer, theme pair, brand ref |
+| `_brand.yml` | Single source of truth for colours and typography |
+| `assets/styles/theme.scss` | All custom styles — only SCSS file |
+| `ar/_metadata.yml` | RTL config + JS that translates nav text and remaps hrefs to `/ar/*`, then restores `.active` class |
+| `_includes/_fix-nav.html` | Injects language badge (EN/AR) into navbar |
+| `_includes/_mode-toggle.html` | Floating dark/light mode toggle |
 
-**Build a single page (faster iteration):**
-```bash
-quarto render content/en/week-01-conditioning.qmd
-```
+**Pages (English):** `index.qmd` · `about.qmd` · `projects.qmd` · `contact.qmd` · `accessibility.qmd` · `license.qmd`
 
-**Build without executing** (layout/style changes only):
-```bash
-quarto render --no-execute
-```
+**Pages (Arabic):** `ar/index.qmd` · `ar/about.qmd` · `ar/contact.qmd` — RTL via `lang: ar; dir: rtl` in `ar/_metadata.yml`
 
-Output goes to `_site/` (not `_build/`).
+## Styling Rules
 
-## Architecture
+- All colours come from `_brand.yml` palette via Quarto's `--quarto-scss-export-*` variables, aliased in `theme.scss` as `--mb-*`. Never hardcode hex values.
+- Dark mode: Quarto handles light/dark theme switching (`flatly`/`darkly`). Use `$body-color`, `$body-bg`, `$navbar-fg`, `$navbar-bg`, `$footer-fg`, `$footer-bg` — they resolve correctly in both modes.
+- RTL overrides live in the `[dir="rtl"]` block at the bottom of `theme.scss`.
 
-- **`_quarto.yml`** — primary site config: project type, navbar, sidebar, footer, light/dark theme pair, brand reference.
-- **`_brand.yml`** — single source of truth for all colours and typography. All CSS uses `--brand-*` custom properties; never hardcode hex values in SCSS.
-- **`pyproject.toml`** — dependency management via `uv`. Add new dependencies here and run `uv sync`.
-- **`styles/custom.scss`** — site-wide styles. Sections: semantic colour bridge (`:root`), hero, components, dark mode (`[data-bs-theme=dark]`), RTL corrections (`[dir="rtl"]`).
-- **`index.qmd`** — English landing page.
-- **`about.qmd`** — English about page.
-- **`ar/`** — Arabic section (`/ar/`). Each page sets `lang: ar; dir: rtl` via `ar/_metadata.yml`.
-- **`content/en/`** — English lesson pages (`.qmd` files).
-- **`content/ar/`** — Arabic lesson pages.
-- **`.github/workflows/deploy.yml`** — CI pipeline: `quarto render` on push to `main`, deploys `_site/` to GitHub Pages.
-- **`_site/`** — generated output, not committed.
+### Design Token Semantics
 
-## Styling rules
+| Token | Colour | Use for |
+| --- | --- | --- |
+| `--mb-primary` | anvil-teal | Functional UI feedback: form focus, link/tab hover, contact icons |
+| `--mb-accent` | hammered-gold | Decorative emphasis: image glows, borders, card accents |
+| `--mb-accent-light` | navbar-hl | Scrolled navbar active/hover (light-on-dark contrast) |
 
-- All colours must reference `--brand-*` CSS variables (generated from `_brand.yml`) or the semantic bridge variables (`--color-primary`, `--color-accent`, etc. defined in `custom.scss`).
-- Dark mode overrides live in the `[data-bs-theme=dark]` block in `custom.scss`.
-- RTL fixes live in the `[dir="rtl"]` block in `custom.scss`.
-- Theme pair: `light: [flatly, styles/custom.scss]` / `dark: [darkly, styles/custom.scss]`.
+### Link Styling Patterns
 
-## Adding content
+**Pattern A — Content links** (`$_link-underline-*` variables): Animated underline thickness + colour. Applied to `p a`, `li a`, `blockquote a` inside `main`. Not for nav or buttons.
 
-1. Create `content/en/<slug>.qmd` (and optionally `content/ar/<slug>.qmd` for Arabic).
-2. Add the page to the `sidebar` section in `_quarto.yml`.
-3. Run `quarto render content/en/<slug>.qmd` to test before a full build.
+**Pattern B — Metadata links**: Toggle `text-decoration` on hover only. For author names, dates, meta labels.
+
+**Pattern C — Navigation** (`::after` pseudo-element): Animated underline expanding from centre. Applied to `.navbar-nav a.nav-link`.
+
+**Pattern D — Interactive UI** (`transform`): `translateY`/`scale` motion on social links, cert badges, hero image.
+
+## RTL Notes
+
+- Arabic pages at `/ar/` share the same navbar config as English. Quarto's server-side `.active` detection uses English hrefs and won't match `/ar/*` URLs — `ar/_metadata.yml` JS handles this by stripping and re-applying `.active` after remapping hrefs.
+- Contact form RTL separator flip is in the `[dir="rtl"] #contact` block in `theme.scss`.
+- Footer is forced `direction: ltr` to keep icon layout consistent.
