@@ -1,0 +1,19 @@
+execute:
+  freeze: true
+
+title-block-banner: true
+
+citation: true
+appendix-cite-as: display
+
+toc: true
+toc-title: جدول المحتويات
+toc-location: right
+
+format:
+  html:
+    code-overflow: wrap
+    template-partials:
+      - ../../_partials/title-block-link-buttons/title-block.html
+
+author: Mohamed Bakr

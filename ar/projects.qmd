@@ -1,12 +1,20 @@
 ---
 title: "المشاريع"
+author: ""
+comments: false
+citation: false
+description: |
+  تعرض هذه الصفحة مجموعة مختارة من المشاريع التي عملت عليها، والتي تغطي مجالات مختلفة مثل علم البيانات، التعلم الآلي، وتطوير البرمجيات. يتضمن كل مشروع وصفًا موجزًا، والتقنيات المستخدمة، وروابط إلى موقع المشروع أو الوثائق حيثما كان ذلك مناسبًا. تعكس هذه المشاريع مهاراتي واهتماماتي في تطبيق الحلول المستندة إلى البيانات على مشاكل العالم الحقيقي.
 listing:
   contents: "projects/*/index.qmd"
-  sort: date desc
   type: grid
-  grid-columns: 2
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [title, subtitle, image, date]
+  fields: [title, subtitle, categories, date, image]
+  sort: date desc
+  filter-ui: true
+  image-align: left
+  image-height: 100%
+format: 
+  html: 
+    page-layout: full
+title-block-banner: false
 ---

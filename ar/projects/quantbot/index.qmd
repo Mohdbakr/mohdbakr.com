@@ -1,15 +1,45 @@
 ---
 title: "Quantbot"
-subtitle: "مطوّر بنية تحتية وجانب خلفي/ذكاء اصطناعي توليدي | جامعة كاليفورنيا بيركلي | يوليو ٢٠٢٥"
-date: "2025-07-01"
-image: ../../../assets/images/projects/quantbot.png
-image-alt: "لقطة شاشة مشروع Quantbot"
+subtitle: "مستشار محفظة متعدد الوكلاء للمستثمرين الأفراد | UC Berkeley MIDS"
 description: "وكيل دردشة سحابي متعدد الوكلاء يساعد المستثمرين الأفراد على بناء محافظ استثمارية مخصصة بناءً على درجة تحملهم للمخاطر وميزانياتهم وتفضيلاتهم."
-categories: [GenAI, Python, AWS, React]
+author:
+  - name: Preethi Raju
+    url: https://linkedin.com/in/preethi-raju-a0840192
+  - name: Phillip Hoang
+    url: https://linkedin.com/in/philiphoang
+  - name: Mohamed Bakr
+    url: https://linkedin.com/in/mohdbakr
+  - name: Sameer Karim
+    url: https://linkedin.com/in/sameer-karim
+  - name: Gilbert Wong
+    url: https://github.com/gilbertwong22
+date: "2025-07-01"
+date-modified: "2025-07-01"
+slug: "quantbot"
+image: /projects/quantbot/featured.png
+image-alt: "لقطة شاشة مشروع Quantbot"
+categories:
+  - GenAI
+  - Python
+  - AWS
+  - React
+  - Multi-Agent Systems
+  - Neo4j
+  - PostgreSQL
+  - MIDS
+links:
+- icon: link
+  name: الموقع
+  url: https://thequantbot.com
+  target: _blank
+  rel: noopener noreferrer
+- icon: file
+  name: التوثيق
+  url: https://docs.thequantbot.com
+  target: _blank
+  rel: noopener noreferrer
 ---
 
-![Quantbot](../../../assets/images/projects/quantbot.png){.project-banner}
+![Quantbot](/projects/quantbot/screenshot.png){.project-banner}
 
 وكيل دردشة سحابي مصمَّم لمساعدة المستثمرين الأفراد على بناء محافظ استثمارية مخصصة وفهم مبادئ الاستثمار الأساسية بناءً على درجة تحملهم للمخاطر وميزانياتهم وتفضيلاتهم. النظام مبني بلغة Python في الجانب الخلفي وReact في الواجهة الأمامية، ويستخدم Google ADK لبنية متعددة الوكلاء وNeo4j لإدارة الذاكرة وقاعدة المعرفة. مُنشأ بالكامل على AWS بما يشمل PostgreSQL لتخزين البيانات وRoute 53 لتوجيه النطاق.
-
-[الموقع](https://thequantbot.com){target="_blank" rel="noopener noreferrer"} | [التوثيق](https://docs.thequantbot.com){target="_blank" rel="noopener noreferrer"}

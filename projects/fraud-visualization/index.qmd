@@ -2,23 +2,30 @@
 title: "Fraud Visualization"
 subtitle: "SME & Visualization Practitioner | UC Berkeley MIDS"
 description: "An interactive website exploring fraud case data through Altair visualizations, correlating reported fraud with socioeconomic indicators."
-author: 
-    - Zakaria Ali
-    - Mohamed Bakr
-    - Subhasis Das
-    - Hyung Jin Kim
-    - Eun-Hae Ko
+author:
+  - name: Zakaria Ali
+    url: https://linkedin.com/in/zakaria-ali-80336758
+  - name: Mohamed Bakr
+    url: https://www.linkedin.com/in/mohdbakr/
+  - name: Subhasis Das
+    url: https://www.linkedin.com/in/subhasisdas81/
+  - name: Hyung Jin Kim
+    url: https://linkedin.com/in/hyungjinkim80
+  - name: Eun-Hae Ko
+    url: https://linkedin.com/in/eun-hae-ko-016540159
 date: "2024-12-01"
 date-modified: "2024-12-01"
 slug: "fraud-visualization"
-image: ../../assets/images/projects/visualization.png
+image: /projects/fraud-visualization/featured.png
 image-alt: "Fraud visualization project"
 categories: 
-    - Data Visualization
-    - Altair
-    - Python
-    - Flask
-    - Occupational Fraud
+  - Data Visualization
+  - Altair
+  - Python
+  - Flask
+  - Occupational Fraud
+  - MIDS
+  - ACFE
 links:
   - icon: link
     name: Website
@@ -27,8 +34,6 @@ links:
     rel: noopener noreferrer
 ---
 
-![Fraud Visualization](../../assets/images/projects/visualization.png){.project-banner}
+![Fraud Visualization](/projects/fraud-visualization/screenshot.png){.project-banner}
 
 A website that explores alternative ways of representing the number of reported fraud cases using [Altair](https://altair-viz.github.io/){target="_blank" rel="noopener noreferrer"}. By analyzing the correlation between reported fraud cases and indicators such as corruption perception scores, GDP per capita, and average years of education, we aim to provide a more comprehensive view of the factors that influence fraud reporting and detection.
-
-[Website](https://apps.ischool.berkeley.edu/~subhasis.das/w209/fraud){target="_blank" rel="noopener noreferrer"}

@@ -3,14 +3,18 @@ title: "Flight Delay Predictions"
 subtitle: "Machine Learning at Scale Project using PySpark and Databricks | UC Berkeley MIDS"
 description: "A Databricks ML project predicting U.S. domestic flight delays using PySpark and MLlib at scale across millions of flight records."
 author:
-  - Mohamed Bakr
-  - Erica Landreth
-  - Danielle Yoseloff
-  - Shruti Gupta
+  - name: Mohamed Bakr
+    url: https://www.linkedin.com/in/mohdbakr/
+  - name: Erica Landreth
+    url: https://www.linkedin.com/in/erica-landreth-1427aa167/
+  - name: Danielle Yoseloff
+    url: https://www.linkedin.com/in/danielleyoseloff/
+  - name: Shruti Gupta
+    url: https://www.linkedin.com/in/sgraya/
 date: "2025-04-01"
 date-modified: "2025-04-01"
 slug: "flight-delay-predictions"
-image: featured.png
+image: /projects/flight-delays/featured.png
 image-alt: "Flight delays predictions project"
 categories: 
   - Machine Learning
@@ -23,6 +27,8 @@ categories:
   - MapReduce
   - Feature Engineering
   - Classification Models
+  - MIDS
+  - NOAA
 links:
 - icon: link
   name: Docs Website
@@ -42,8 +48,6 @@ links:
 ---
 
 
-![Flight Delay Predictions](../../assets/images/projects/flight-delay.png){.project-banner}
+![Flight Delay Predictions](/projects/flight-delays/screenshot.png){.project-banner}
 
 A Databricks-based machine learning project aimed at predicting U.S. domestic flight delays by analyzing millions of flight and weather records. Using PySpark and MLlib, we applied distributed data processing and classification models at scale. Feature engineering and model training were executed using MapReduce-style operations to identify delay patterns influenced by weather, airline, and airport congestion factors. The project demonstrates how cloud-native platforms and big data tools can enable scalable, real-time predictive analytics.
-
-[Website](https://bakr-ucb.github.io/261-Final-Project/){target="_blank" rel="noopener noreferrer"} | [Final Presentation](https://github.com/bakr-UCB/261-Final-Project/blob/main/reports/figures/Phase_III_Final_Presentation.pdf){target="_blank" rel="noopener noreferrer"}

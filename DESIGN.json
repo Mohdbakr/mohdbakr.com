@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-01T00:00:00Z",
+  "title": "Design System: Mohamed Bakr Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "anvil-teal": {
+        "role": "primary",
+        "displayName": "Anvil Teal",
+        "canonical": "oklch(0.45 0.10 176)",
+        "quarto-var": "$primary / --mb-primary",
+        "tonalRamp": [
+          "oklch(0.15 0.04 176)",
+          "oklch(0.25 0.06 176)",
+          "oklch(0.35 0.09 176)",
+          "oklch(0.45 0.10 176)",
+          "oklch(0.57 0.09 176)",
+          "oklch(0.68 0.07 176)",
+          "oklch(0.80 0.04 176)",
+          "oklch(0.92 0.02 176)"
+        ]
+      },
+      "anvil-teal-light": {
+        "role": "primary-dark-mode",
+        "displayName": "Anvil Teal Light",
+        "canonical": "oklch(0.80 0.12 180)",
+        "quarto-var": "$primary (dark mode) / --mb-primary",
+        "tonalRamp": [
+          "oklch(0.20 0.05 180)",
+          "oklch(0.33 0.08 180)",
+          "oklch(0.46 0.10 180)",
+          "oklch(0.58 0.12 180)",
+          "oklch(0.68 0.12 180)",
+          "oklch(0.80 0.12 180)",
+          "oklch(0.88 0.07 180)",
+          "oklch(0.95 0.03 180)"
+        ]
+      },
+      "hammered-gold": {
+        "role": "secondary",
+        "displayName": "Hammered Gold",
+        "canonical": "oklch(0.52 0.14 65)",
+        "quarto-var": "$secondary / --mb-accent",
+        "tonalRamp": [
+          "oklch(0.15 0.05 65)",
+          "oklch(0.27 0.09 65)",
+          "oklch(0.38 0.12 65)",
+          "oklch(0.52 0.14 65)",
+          "oklch(0.63 0.12 65)",
+          "oklch(0.74 0.09 65)",
+          "oklch(0.85 0.05 65)",
+          "oklch(0.94 0.02 65)"
+        ]
+      },
+      "hammered-gold-light": {
+        "role": "secondary-dark-mode",
+        "displayName": "Hammered Gold Light",
+        "canonical": "oklch(0.84 0.16 86)",
+        "quarto-var": "$secondary (dark mode) / --mb-accent",
+        "tonalRamp": [
+          "oklch(0.20 0.06 86)",
+          "oklch(0.33 0.10 86)",
+          "oklch(0.47 0.14 86)",
+          "oklch(0.60 0.16 86)",
+          "oklch(0.70 0.16 86)",
+          "oklch(0.84 0.16 86)",
+          "oklch(0.91 0.09 86)",
+          "oklch(0.96 0.03 86)"
+        ]
+      },
+      "molten-crimson": {
+        "role": "danger",
+        "displayName": "Molten Crimson",
+        "canonical": "oklch(0.40 0.17 25)",
+        "quarto-var": "$danger",
+        "tonalRamp": [
+          "oklch(0.15 0.07 25)",
+          "oklch(0.25 0.11 25)",
+          "oklch(0.33 0.14 25)",
+          "oklch(0.40 0.17 25)",
+          "oklch(0.52 0.14 25)",
+          "oklch(0.65 0.10 25)",
+          "oklch(0.78 0.06 25)",
+          "oklch(0.92 0.02 25)"
+        ]
+      },
+      "copper-green": {
+        "role": "success",
+        "displayName": "Copper Green",
+        "canonical": "oklch(0.35 0.10 160)",
+        "quarto-var": "$success",
+        "tonalRamp": [
+          "oklch(0.12 0.04 160)",
+          "oklch(0.22 0.07 160)",
+          "oklch(0.35 0.10 160)",
+          "oklch(0.47 0.10 160)",
+          "oklch(0.60 0.08 160)",
+          "oklch(0.72 0.06 160)",
+          "oklch(0.84 0.04 160)",
+          "oklch(0.94 0.01 160)"
+        ]
+      },
+      "surface-light": {
+        "role": "background-light",
+        "displayName": "Surface Light",
+        "canonical": "oklch(0.99 0.005 80)",
+        "quarto-var": "$body-bg (light mode)"
+      },
+      "surface-dark": {
+        "role": "background-dark",
+        "displayName": "Surface Dark",
+        "canonical": "oklch(0.25 0.01 50)",
+        "quarto-var": "$body-bg (dark mode)"
+      },
+      "ink-warm": {
+        "role": "foreground-light",
+        "displayName": "Ink Warm",
+        "canonical": "oklch(0.23 0.03 35)",
+        "quarto-var": "$body-color (light mode)"
+      },
+      "parchment": {
+        "role": "foreground-dark",
+        "displayName": "Parchment",
+        "canonical": "oklch(0.86 0.02 60)",
+        "quarto-var": "$body-color (dark mode)"
+      },
+      "iron-slate": {
+        "role": "neutral-muted",
+        "displayName": "Iron Slate",
+        "canonical": "oklch(0.47 0.05 246)",
+        "quarto-var": "$gray-600 range"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name on index page only. Never reused for section headings." },
+      "headline": { "displayName": "Headline", "purpose": "Page-level H1 headings, about page title." },
+      "title": { "displayName": "Title", "purpose": "Subsection H2 headings, project card titles on detail pages." },
+      "body": { "displayName": "Body", "purpose": "All prose. Max 65–75ch regardless of viewport." },
+      "label": { "displayName": "Label", "purpose": "Navbar items, category pills, hero subtitle. Uppercase structural UI only." },
+      "mono": { "displayName": "Mono", "purpose": "Code blocks, language toggle badge, precision UI signals." },
+      "arabic-body": { "displayName": "Arabic Body", "purpose": "All prose in [dir=rtl] contexts. Tajawal replaces Poppins entirely." },
+      "arabic-title": { "displayName": "Arabic Title", "purpose": "H1–H6 in [dir=rtl] contexts. Readex Pro replaces Lora." }
+    },
+    "shadows": [
+      {
+        "name": "ambient",
+        "value": "0 2px 4px rgba(var(--bs-body-color-rgb), 0.08)",
+        "purpose": "Rest state for cards and containers. Barely visible; registers as material presence."
+      },
+      {
+        "name": "elevated",
+        "value": "0 4px 12px rgba(var(--bs-body-color-rgb), 0.10)",
+        "purpose": "Hover state for interactive containers. The primary interaction signal."
+      },
+      {
+        "name": "deep",
+        "value": "0 8px 24px rgba(var(--bs-body-color-rgb), 0.15)",
+        "purpose": "Profile image and hero portrait. Communicates singular importance."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fast",
+        "value": "0.2s",
+        "purpose": "Micro-interactions: button hover, badge color shifts, pill transitions."
+      },
+      {
+        "name": "standard",
+        "value": "0.3s",
+        "purpose": "State transitions: link underlines, card borders, nav opacity."
+      },
+      {
+        "name": "slow",
+        "value": "0.6s",
+        "purpose": "Deliberate animations: card image zoom, navbar scroll transition, page fade-in."
+      },
+      {
+        "name": "easing-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for all state transitions. Ease-out character."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "576px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Primary interactive button. Transparent background, body-color border. Ghost-first: content is the point, not the button.",
+      "html": "<button class=\"ds-btn-ghost\">View Project</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 0.4rem; background: transparent; color: var(--bs-body-color, #352A26); border: 1px solid rgba(53, 42, 38, 0.25); border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.875rem; font-family: Poppins, system-ui, sans-serif; font-weight: 500; cursor: pointer; text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; } .ds-btn-ghost:hover { background: rgba(53, 42, 38, 0.06); border-color: var(--mb-primary, #0F766E); color: var(--mb-primary, #0F766E); transform: translateY(-2px); box-shadow: 0 2px 4px rgba(53, 42, 38, 0.08); } .ds-btn-ghost:active { transform: translateY(0); box-shadow: none; } .ds-btn-ghost:focus-visible { outline: 2px solid var(--bs-body-color, #352A26); outline-offset: 2px; }"
+    },
+    {
+      "name": "Social Icon Link",
+      "kind": "button",
+      "refersTo": "social-link",
+      "description": "44×44px icon-only touch target for hero and about pages. Ghost fill, subtle border.",
+      "html": "<a class=\"ds-social-link\" href=\"#\" aria-label=\"GitHub\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z\"/></svg></a>",
+      "css": ".ds-social-link { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: rgba(53, 42, 38, 0.08); border: 1px solid rgba(53, 42, 38, 0.15); border-radius: 8px; color: rgba(53, 42, 38, 0.85); text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); } .ds-social-link:hover { background: rgba(53, 42, 38, 0.12); border-color: rgba(53, 42, 38, 0.30); color: var(--bs-body-color, #352A26); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(53, 42, 38, 0.10); } .ds-social-link:active { transform: translateY(0); } .ds-social-link:focus-visible { outline: 2px solid var(--bs-body-color, #352A26); outline-offset: 2px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Listing card with ambient elevation at rest. Lifts with hammered-gold accent ring on hover.",
+      "html": "<div class=\"ds-project-card\"><img class=\"ds-project-card-image\" src=\"\" alt=\"Project screenshot\" /><div class=\"ds-project-card-body\"><h3 class=\"ds-project-card-title\">Fraud Visualization</h3><p class=\"ds-project-card-subtitle\">Interactive analytics dashboard</p></div></div>",
+      "css": ".ds-project-card { background: transparent; border: 1px solid rgba(53, 42, 38, 0.08); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(53, 42, 38, 0.08); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; } .ds-project-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(53, 42, 38, 0.10), 0 0 0 1px color-mix(in srgb, var(--mb-accent, #A16207) 35%, transparent); border-color: color-mix(in srgb, var(--mb-accent, #A16207) 35%, transparent); } .ds-project-card-image { display: block; width: 100%; height: 200px; object-fit: cover; transition: transform 0.6s ease; } .ds-project-card:hover .ds-project-card-image { transform: scale(1.04); } .ds-project-card-body { padding: 1rem; } .ds-project-card-title { font-family: Lora, Georgia, serif; font-size: 1.1rem; font-weight: 700; margin: 0 0 0.25rem; } .ds-project-card-subtitle { font-family: Poppins, system-ui, sans-serif; font-size: 0.875rem; opacity: 0.65; margin: 0; }"
+    },
+    {
+      "name": "Category Pill",
+      "kind": "chip",
+      "refersTo": "category-pill",
+      "description": "Clickable filter pill. Teal treatment on listing pages (functional), gold treatment on detail pages (decorative).",
+      "html": "<span class=\"ds-category-pill\">Python</span>",
+      "css": ".ds-category-pill { display: inline-block; padding: 0.2rem 0.6rem; border: 1px solid rgba(53, 42, 38, 0.20); border-radius: 4px; font-family: Poppins, system-ui, sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--bs-body-color, #352A26); background: transparent; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease; } .ds-category-pill:hover { background: color-mix(in srgb, var(--mb-primary, #0F766E) 10%, transparent); border-color: var(--mb-primary, #0F766E); color: var(--mb-primary, #0F766E); transform: translateY(-1px); }"
+    },
+    {
+      "name": "Language Toggle Badge",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature component: monospace pill badge in the navbar for EN/AR switching. Inverted colors at page top; flips on scroll.",
+      "html": "<a class=\"ds-lang-badge\" href=\"/ar/\">AR</a>",
+      "css": ".ds-lang-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 900; letter-spacing: 0.07em; padding: 0.18em 0.55em; border-radius: 4px; line-height: 1.5; text-decoration: none; color: var(--bs-body-bg, #FAFAF9); background-color: var(--bs-body-color, #352A26); border: 1.5px solid rgba(53, 42, 38, 0.45); transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; } .ds-lang-badge:hover { color: rgba(53, 42, 38, 0.5); background: rgba(250, 250, 249, 0.5); border-color: rgba(53, 42, 38, 0.75); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Forged Portfolio",
+    "overview": "This is a portfolio built the way a precision instrument is made: not designed to impress at a glance, but to reward close attention. The metalwork palette (Anvil Teal, Hammered Gold, Molten Crimson, Iron Slate, Copper Green) is not decorative naming — it encodes a philosophy. Real craft takes time, pressure, and iteration. The result is refined through process, not ornamented in a rush.\n\nThe typographic pairing of Lora (an editorial serif with ink-trap origins) and Poppins (a clean geometric sans) encodes the same duality: depth and rigour alongside clarity and approachability. Hierarchy is established through scale and weight contrast, never by relying on color alone. Body text is capped at 65–75ch to preserve reading comfort at every viewport width.\n\nSurfaces carry ambient elevation from rest. Cards and containers are slightly lifted even at default state — they don't need to be hovered to register as objects with weight and presence. Hover states amplify that presence: a lift, deeper shadow, and a warm hammered-gold glow.",
+    "keyCharacteristics": [
+      "Serif/sans pairing: Lora for authority, Poppins for clarity",
+      "Metalwork palette: named for material qualities, not hex codes",
+      "Ambient elevation at rest: surfaces have presence before interaction",
+      "Two-role color discipline: teal for function, gold for decoration",
+      "Full bilingual EN/AR support with dedicated Arabic typefaces (Tajawal body, Readex Pro headings)",
+      "All color in code flows through Quarto _brand.yml exports and Bootstrap/Quarto variables"
+    ],
+    "rules": [
+      {
+        "name": "The Two-Role Rule",
+        "body": "Anvil Teal (--mb-primary) signals function; Hammered Gold (--mb-accent) signals decoration. They never swap roles. A teal card glow or a gold focus ring is a system violation.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Neutral Rule",
+        "body": "Never use #fff or #000. $body-bg and $body-color always resolve to warmth-tinted values as defined in _brand.yml. This holds in both light and dark modes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Headings Rule",
+        "body": "H1–H3 in content areas are always Lora (or Readex Pro in RTL). Poppins is for UI labels and subtitles only. The serif/sans split is the primary hierarchy signal.",
+        "section": "typography"
+      },
+      {
+        "name": "The Arabic Type Rule",
+        "body": "In [dir=rtl] contexts, body text renders in Tajawal and headings in Readex Pro. These are not fallbacks — they are the intentional typefaces. Never allow Poppins or Lora to render Arabic script.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight-Before-Touch Rule",
+        "body": "Content objects carry ambient shadow at rest. Shadow reflects the intrinsic weight of real work — it doesn't have to be earned by hovering. Only its depth changes on interaction.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Frame-Is-Flat Rule",
+        "body": "Navbar, footer, and page background never receive elevation. Depth belongs to content, not chrome.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use var(--mb-primary) for every functional feedback moment: link hover, focus rings, active nav, form focus, contact icon hover.",
+      "Do use var(--mb-accent) for decorative glow only: image borders, card hover rings, ambient warmth that signals quality without implying action.",
+      "Do give cards $_shadow-sm at rest. Ambient elevation is the system's signature.",
+      "Do cap body prose at 65–75ch. Reading comfort is non-negotiable.",
+      "Do use Lora (Readex Pro in RTL) for H1–H3 in content areas.",
+      "Do use Tajawal for Arabic body text and Readex Pro for Arabic headings in all [dir=rtl] contexts.",
+      "Do source all colors from Quarto/Bootstrap variables. _brand.yml is the single source of truth.",
+      "Do ensure every interactive element has a focus-visible indicator: 2px solid $body-color, 2px offset.",
+      "Do test every component in both light and dark mode and with prefers-reduced-motion active."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text with a gradient). Emphasis comes from weight and size.",
+      "Don't use glassmorphism decoratively. Blur effects are prohibited except where structurally justified.",
+      "Don't use gradient blobs, ambient background gradients, or decorative hero glows.",
+      "Don't use border-left greater than 1px as a colored accent stripe. Rewrite with background tints or full borders.",
+      "Don't build identical card grids. The listing should have visual rhythm, not uniformity.",
+      "Don't render LinkedIn blue (#0A66C2) anywhere. LinkedIn icon links render in $body-color.",
+      "Don't use #000, #fff, or any hardcoded hex value in SCSS or CSS.",
+      "Don't apply var(--mb-accent) (Hammered Gold) to interactive/functional states.",
+      "Don't override Quarto/Bootstrap color variables with literal values.",
+      "Don't remove focus-visible indicators without a replacement."
+    ]
+  }
+}

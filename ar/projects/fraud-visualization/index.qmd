@@ -1,15 +1,39 @@
 ---
-title: "تصوير بيانات الاحتيال"
-subtitle: "خبير موضوعي وممارس تصور بيانات | جامعة كاليفورنيا بيركلي | ديسمبر ٢٠٢٤"
-date: "2024-12-01"
-image: ../../../assets/images/projects/visualization.png
-image-alt: "مشروع تصوير بيانات الاحتيال"
+title: "التمثيل المرئي لبيانات الاحتيال"
+subtitle: "مشروع تصور بيانات الاحتيال | UC Berkeley MIDS"
 description: "موقع إلكتروني يستكشف طرقاً بديلة لتمثيل بيانات حالات الاحتيال المُبلَّغ عنها باستخدام Altair، ويحلل ارتباطها بمؤشرات اجتماعية واقتصادية."
-categories: [Data Visualization, Altair, Python]
+author:
+  - name: Zakaria Ali
+    url: https://linkedin.com/in/zakaria-ali-80336758
+  - name: Mohamed Bakr
+    url: https://linkedin.com/in/mohdbakr
+  - name: Subhasis Das
+    url: https://www.linkedin.com/in/subhasisdas81/
+  - name: Hyung Jin Kim
+    url: https://linkedin.com/in/hyungjinkim80
+  - name: Eun-Hae Ko
+    url: https://linkedin.com/in/eun-hae-ko-016540159
+date: "2024-12-01"
+date-modified: "2024-12-01"
+slug: "fraud-visualization"
+image: /projects/fraud-visualization/featured.png
+image-alt: "مشروع التمثيل المرئي لبيانات الاحتيال"
+categories:
+  - Data Visualization
+  - Altair
+  - Python
+  - Flask
+  - Occupational Fraud
+  - MIDS
+  - ACFE
+links:
+  - icon: link
+    name: الموقع
+    url: https://apps.ischool.berkeley.edu/~subhasis.das/w209/fraud
+    target: _blank
+    rel: noopener noreferrer
 ---
 
-![تصوير بيانات الاحتيال](../../../assets/images/projects/visualization.png){.project-banner}
+![تصوير بيانات الاحتيال](/projects/fraud-visualization/screenshot.png){.project-banner}
 
 موقع إلكتروني يستكشف طرقاً بديلة لتمثيل عدد حالات الاحتيال المُبلَّغ عنها باستخدام [Altair](https://altair-viz.github.io/){target="_blank" rel="noopener noreferrer"}. من خلال تحليل الارتباط بين حالات الاحتيال المُبلَّغ عنها ومؤشرات مثل درجات تصور الفساد ونصيب الفرد من الناتج المحلي الإجمالي ومتوسط سنوات التعليم، نسعى إلى تقديم صورة أشمل للعوامل المؤثرة في الإبلاغ عن الاحتيال واكتشافه.
-
-[الموقع](https://apps.ischool.berkeley.edu/~subhasis.das/w209/fraud){target="_blank" rel="noopener noreferrer"}

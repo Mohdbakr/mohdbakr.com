@@ -3,15 +3,20 @@ title: "Quantbot"
 subtitle: "Multi-Agent Portfolio Advisor service for retail investors | UC Berkeley MIDS"
 description: "A cloud-based multi-agent portfolio advisor that helps retail investors build personalized portfolios based on risk tolerance, budget, and preferences."
 author:
-  - Preethi Raju
-  - Phillip Hoang
-  - Mohamed Bakr
-  - Sameer Karim
-  - Gilbert Wong
+  - name: Preethi Raju
+    url: https://linkedin.com/in/preethi-raju-a0840192
+  - name: Phillip Hoang
+    url: https://linkedin.com/in/philiphoang
+  - name: Mohamed Bakr
+    url: https://linkedin.com/in/mohdbakr
+  - name: Sameer Karim
+    url: https://linkedin.com/in/sameer-karim
+  - name: Gilbert Wong
+    url: https://github.com/gilbertwong22
 date: "2025-07-01"
 date-modified: "2025-07-01"
 slug: "quantbot"
-image: ../../assets/images/projects/quantbot.png
+image: /projects/quantbot/featured.png
 image-alt: "Quantbot project screenshot"
 categories: 
   - GenAI
@@ -21,6 +26,7 @@ categories:
   - Multi-Agent Systems
   - Neo4j
   - PostgreSQL
+  - MIDS
 links:
 - icon: link
   name: Website
@@ -34,8 +40,6 @@ links:
   rel: noopener noreferrer
 ---
 
-![Quantbot](../../assets/images/projects/quantbot.png){.project-banner}
+![Quantbot](/projects/quantbot/screenshot.png){.project-banner}
 
 A cloud-based chat agent designed to help retail investors build personalized portfolios and understand key investment principles based on their risk tolerance, budget, and preferences. Built using Python (backend) and React (frontend), the system leverages Google's ADK for a multi-agent architecture and Neo4j for memory and knowledge graph management. Deployed entirely on AWS, including PostgreSQL for data storage and Route 53 for domain routing, the platform offers an intelligent, scalable interface that combines financial expertise with conversational AI.
-
-[Website](https://thequantbot.com){target="_blank" rel="noopener noreferrer"} | [Documentation](https://docs.thequantbot.com){target="_blank" rel="noopener noreferrer"}
