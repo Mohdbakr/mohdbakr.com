@@ -689,7 +689,7 @@ hr {
     .subtitle {
         font-size: var(--bs-body-font-size);
         font-weight: var(--bs-body-font-weight);
-        text-align: start;
+        text-align: start !important;
     }
 }
 
