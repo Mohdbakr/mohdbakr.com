@@ -1,0 +1,13 @@
+---
+title: "Blog"
+title-block-banner: true
+listing:
+  contents:
+    - "*/index.qmd"       # direct posts: post-slug/index.qmd
+    - "*/*/index.qmd"     # series posts: series-name/post-slug/index.qmd
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories]
+sidebar: false
+toc: false
+---

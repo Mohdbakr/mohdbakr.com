@@ -1,0 +1,28 @@
+---
+title: "RAGLab"
+date: 2026-09-15
+description: "A benchmarking monorepo comparing RAG implementations, one self-contained project at a time — what it is, why it exists, and what's in it so far."
+categories: [RAG, Engineering]
+---
+
+> **Repo:** [github.com/Mohdbakr/RAGLab](https://github.com/Mohdbakr/RAGLab)
+
+## Why RAGLab
+
+Retrieval-augmented generation (RAG) has become one of those terms everyone uses and almost no one can fully unpack. Ask a practitioner what happens between "upload a document" and "get a grounded answer," and most can name the pieces — chunking, embeddings, a vector store, a prompt — but few have built each piece by hand. The frameworks handle it, and the frameworks are good at their job. That's exactly the problem: good abstractions are invisible, and invisible mechanics are hard to reason about when something goes wrong in production.
+
+**RAGLab** is a monorepo where I build the same RAG problem more than once, each project taking a different set of tradeoffs, so the tradeoffs stay visible instead of hidden behind a library's defaults. Every project under `projects/` is fully standalone — its own dependencies, its own `.env`, its own README — so they stay directly comparable and independently runnable.
+
+## Projects in this series
+
+- **[RAG From Scratch](/posts/raglab/rag-from-scratch/)** — no RAG framework, no vector-database service. Chunking, embeddings, cosine similarity, and prompt assembly, written out plainly. ([project page](/projects/rag-from-scratch/))
+
+More entries land here as new projects ship.
+
+## What's next
+
+Later RAGLab projects will explore the tradeoffs the first one deliberately skipped: a real ANN-backed vector database, hybrid lexical + semantic retrieval, and reranking — each self-contained, each directly comparable back to the baseline.
+
+## References
+
+- [RAGLab on GitHub](https://github.com/Mohdbakr/RAGLab)
