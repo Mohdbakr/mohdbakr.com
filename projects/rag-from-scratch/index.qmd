@@ -1,0 +1,30 @@
+---
+title: "RAGLab: RAG From Scratch"
+subtitle: "A retrieval-augmented generation pipeline built with no framework and no vector database"
+description: "The first project in RAGLab: chunking, embeddings, cosine similarity, and prompt assembly written out plainly, with nothing hidden behind an abstraction."
+date: "2026-09-14"
+date-modified: "2026-09-14"
+slug: "rag-from-scratch"
+image: /projects/rag-from-scratch/featured.png
+image-alt: "Layered architecture diagram of the RAG From Scratch pipeline: CLI, services, domain, and core layers"
+categories:
+  - RAG
+  - LLM
+  - Python
+  - NumPy
+links:
+- icon: github
+  name: Repo
+  url: https://github.com/Mohdbakr/RAGLab
+  target: _blank
+  rel: noopener noreferrer
+- icon: file-text
+  name: Blog post
+  url: /posts/raglab/rag-from-scratch/
+  target: _blank
+  rel: noopener noreferrer
+---
+
+![RAGLab: RAG From Scratch](/projects/rag-from-scratch/screenshot.png){.project-banner}
+
+The first project in a benchmarking monorepo where I build the same RAG problem more than once, each project taking a different set of tradeoffs so those tradeoffs stay visible instead of hidden behind a library's defaults. This one is the baseline: no RAG framework, no vector-database service — just a flat NumPy index with brute-force cosine similarity, word-window chunking, and prompt assembly, all provider-agnostic via `litellm`. A CLI (`ingest` / `ask` / `demo`) ingests a text file and answers questions grounded in it, narrating each pipeline step — chunk, embed, retrieve, generate — as it happens. See the [full writeup](/posts/raglab/rag-from-scratch/) for the architecture and design tradeoffs.

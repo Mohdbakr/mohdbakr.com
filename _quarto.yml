@@ -27,6 +27,8 @@ website:
     left:
       - text: "About"
         href: about.qmd
+      - text: "Blog"
+        href: posts/index.qmd
       - text: "Projects"
         href: projects.qmd
     right:

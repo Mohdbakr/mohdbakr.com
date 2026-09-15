@@ -1,0 +1,154 @@
+---
+title: "RAG From Scratch: No Framework, No Vector Database"
+date: 2026-09-14
+description: "The first project in RAGLab: a retrieval-augmented generation pipeline built with no framework and no vector database, so every mechanic stays visible."
+categories: [RAG, Python, Engineering]
+series: "RAGLab"
+---
+
+> **Series:** [RAGLab](/posts/raglab/) · **Project page:** [RAGLab: RAG From Scratch](/projects/rag-from-scratch/) · **Repo:** [github.com/Mohdbakr/RAGLab](https://github.com/Mohdbakr/RAGLab) — `projects/01-rag-from-scratch`
+
+This is the first entry in [RAGLab](/posts/raglab/), a benchmarking monorepo where I build the same RAG problem more than once — each project taking a different set of tradeoffs, so those tradeoffs stay visible instead of hidden behind a library's defaults. This one is the baseline: no RAG framework, no vector-database service. Just chunking, embeddings, cosine similarity, and prompt assembly, written out plainly.
+
+## What "from scratch" actually means here
+
+Three claims this project makes, and how it backs each one:
+
+- **No RAG framework.** No LangChain, no LlamaIndex, no orchestration layer deciding how retrieval and generation compose. The pipeline is four function calls in a single Python module.
+- **No vector-database service.** The index is a NumPy array of embedding vectors plus their source text, persisted as a JSON file. No Milvus, no Pinecone, no server to run.
+- **Provider-agnostic, not provider-free.** Embeddings and chat completions go through [`litellm`](https://github.com/BerriAI/litellm), so swapping `text-embedding-3-small` for any other supported embedding model is a config change, not a rewrite.
+
+## Architecture
+
+Three layers, dependencies pointing one direction only:
+
+```{mermaid}
+%%| fig-cap: "Layered architecture: cli.py depends on core and services; services depends on domain and core; domain has no dependencies."
+%%| label: fig-architecture
+graph TD
+    CLI["cli.py<br/>(interface layer)"]
+    CORE["core/<br/>config · exceptions · logging<br/>(cross-cutting, no internal deps)"]
+    SERVICES["services/<br/>embeddings · llm · index · rag<br/>(I/O + orchestration)"]
+    DOMAIN["domain/<br/>chunking · models<br/>(pure, no I/O)"]
+
+    CLI --> CORE
+    CLI --> SERVICES
+    SERVICES --> DOMAIN
+    SERVICES --> CORE
+```
+
+- **`domain/`** holds pure logic with no I/O: the word-window chunker and the shared dataclasses (`DocumentChunk`, `ScoredChunk`, `AnswerResult`).
+- **`services/`** is everything that touches the network or disk: `embeddings.py` and `llm.py` (direct `litellm` calls), `index.py` (the on-disk cosine-similarity index), and `rag.py`, which ties the others together into `ingest_text()`, `retrieve()`, and `ask()`.
+- **`core/`** is cross-cutting config, the error hierarchy, and logging — no dependency on anything else in the package.
+- **`cli.py`** is the only place that reads configuration and the only place that turns an internal error into a clean exit code instead of a traceback.
+
+See @fig-architecture for the layer diagram above.
+
+## The pipeline, in code
+
+### Chunking
+
+```{.python filename="domain/chunking.py"}
+def chunk_text(text: str, *, chunk_size: int = 200, overlap: int = 20) -> list[str]:
+    words = text.split()
+    if not words:
+        return []
+
+    chunks: list[str] = []
+    start = 0
+    step = chunk_size - overlap
+    while start < len(words):
+        end = start + chunk_size
+        chunks.append(" ".join(words[start:end]))
+        if end >= len(words):
+            break
+        start += step
+    return chunks
+```
+
+Word-window chunking, not semantic chunking. It's simple enough to test exhaustively and reason about at a glance, but it can split a sentence in half — a production chunker would respect sentence or paragraph boundaries instead. That tradeoff is stated explicitly, not discovered later in a debugging session.
+
+### Retrieval
+
+```{.python filename="services/index.py"}
+def search(self, query_embedding: list[float], *, k: int = 4) -> list[ScoredChunk]:
+    if k <= 0:
+        raise ValueError(f"k must be positive, got {k}")
+    if not self._chunks:
+        return []
+
+    matrix = np.array([c.embedding for c in self._chunks], dtype=np.float64)
+    query = np.array(query_embedding, dtype=np.float64)
+
+    matrix_norms = np.linalg.norm(matrix, axis=1)
+    query_norm = np.linalg.norm(query)
+    similarities = (matrix @ query) / (matrix_norms * query_norm + 1e-10)
+
+    top_indices = np.argsort(-similarities)[:k]
+    return [ScoredChunk(chunk=self._chunks[i], score=float(similarities[i])) for i in top_indices]
+```
+
+Brute-force cosine similarity over a flat array — vectorized with NumPy, but still O(n) per query. NumPy's vectorization makes that fast in absolute terms — fine for a few thousand chunks; a real ANN-backed vector database earns its place once that stops being true. That crossover point is exactly the kind of tradeoff a framework would make for you, silently.
+
+#### The math
+
+Cosine similarity measures the *angle* between two embedding vectors, not the distance between them:
+
+$$
+\cos(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}
+ = \frac{\sum_{i=1}^{n} a_i b_i}{\sqrt{\sum_{i=1}^{n} a_i^2}\,\sqrt{\sum_{i=1}^{n} b_i^2}}
+$$ {#eq-cosine}
+
+In plain terms (@eq-cosine): the numerator is the dot product — how much the two vectors point in the same direction. The denominator is the product of their magnitudes (lengths). Dividing one by the other **normalizes** the result to a value between $-1$ and $1$:
+
+- $1$ means the vectors point the same way (semantically alike),
+- $0$ means unrelated,
+- $-1$ means opposite.
+
+One thing worth flagging if you're moving between tools: `search()` returns cosine *similarity* — higher means more similar, ranging $-1$ to $1$. Not every library reports it that way. [pgvector](https://github.com/pgvector/pgvector)'s `<=>` operator, for instance, returns cosine *distance* ($1 - \cos(\theta)$), ranging $0$ to $2$, where lower means more similar — the exact opposite direction. Carry a similarity threshold or a "top-k, sort descending" assumption over from one convention to the other without flipping it, and results rank backwards with no error to catch it — just the wrong chunks coming back first.
+
+#### Reading the code
+
+- `matrix @ query` is matrix–vector multiplication: `matrix` holds one row per stored chunk, so this single line computes the dot product of *every* chunk against the query at once — the numerator in @eq-cosine, for the whole index, in one NumPy call instead of a Python loop.
+- `np.linalg.norm(matrix, axis=1)` computes each chunk's magnitude, $\|\mathbf{a}\|$; `axis=1` means "one norm per row." `query_norm` is the query's own magnitude, $\|\mathbf{b}\|$.
+- Dividing the dot products by `matrix_norms * query_norm` turns every raw dot product into a cosine similarity, all at once via NumPy broadcasting — the `+ 1e-10` just guards against a division by zero if some embedding happens to be a zero vector; it's negligible next to any real embedding's magnitude.
+- `np.argsort(-similarities)` ranks chunks most-similar-first. `argsort` normally sorts *ascending*, so negating the array flips the order — the largest similarity becomes the most negative value, and sorts first. `[:k]` then keeps only the top `k` of those indices.
+
+### Watching the cycle happen
+
+The part I found most useful to build wasn't the pipeline itself — it was making the pipeline *narrate* itself. `ingest_text()` and `retrieve()` both take an optional `on_step` callback, fired after each stage:
+
+```text
+$ uv run plainrag ingest report.md
+  -> chunked into 12 piece(s)
+  -> embedded 12 chunk(s) via text-embedding-3-small
+  -> added to index (12 chunk(s) total)
+Added 12 chunk(s) from report.md to .plainrag_index.json
+```
+
+There's also a `demo` command: an interactive loop over `ingest <path>` and `search <query>`, retrieval only — no LLM call in the way. It's the fastest way to answer "what does a chunk actually look like, and how similar is 'similar'?" without a generated answer distracting from the question.
+
+## Try it
+
+```bash
+git clone https://github.com/Mohdbakr/RAGLab
+cd RAGLab/projects/01-rag-from-scratch
+uv sync
+cp .env.example .env   # add an OPENAI_API_KEY, or point at any litellm-supported provider
+
+uv run plainrag demo    # ingest <path> | search <query> | quit
+```
+
+## Key takeaways
+
+- A RAG pipeline is genuinely four steps: chunk, embed, index, retrieve — generation is a fifth step layered on top, not part of retrieval itself.
+- Every "it just works" default a framework picks for you (chunk size, distance metric, index type) is a tradeoff someone made. Building it by hand forces you to make — and own — each of those choices.
+- O(n) brute-force search isn't a toy simplification, it's the correct choice below a certain scale. The mistake is not knowing where that line is for your own data.
+- Making a pipeline narrate its own steps is a small change with an outsized payoff for anyone trying to build intuition for what's happening under the hood.
+
+See the [RAGLab series page](/posts/raglab/) for what's next.
+
+## References
+
+- [Project 1 README](https://github.com/Mohdbakr/RAGLab/tree/main/projects/01-rag-from-scratch) — full architecture notes and design tradeoffs
+- [litellm](https://github.com/BerriAI/litellm) — the provider-agnostic embedding/chat layer used throughout
